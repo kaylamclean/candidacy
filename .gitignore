@@ -1,5 +1,4 @@
 # Latex files
-mainthesisUVIC.tex
 *.aux
 *.glo
 *.idx
@@ -27,6 +26,7 @@ mainthesisUVIC.tex
 *.mtc1
 *.out
 *.synctex.gz
+*.synctex
 *.pdf
 *.fls
 *.fdb_latexmk
