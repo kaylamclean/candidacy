@@ -1,0 +1,6 @@
+\section{\textsc{MadGraph}}
+\label{sec:mg}
+
+There are a variety of MC generators available for predicting the experimental outcomes of high-energy particle collisions. \textsc{MadGraph} is commonly used in ATLAS for the generation of few-body hard scatter processes, including mono-$Z$ dark matter events. Then the hard scatter events may be passed to another program called \textsc{Pythia}, which is used to simulate soft processes of the underlying event, including parton showering. The resulting event file contains a complex particle record and hundreds of final state particles. With this, a detector simulator can be used to study how the events would interact inside of the ATLAS detector and be measured in experiment. \textsc{Delphes} is a detector simulation program capable of approximating the highly complicated GEANT software used to simulate the full ATLAS detector. Although highly simplified in comparison, \textsc{Delphes} is useful for fast studies of detector effects, such as energy resolution, on simulated events.
+
+I have used \textsc{MadGraph} and \textsc{Pythia} heavily in my work this far in the mono-$Z$ analysis. I was initially introduced to \textsc{MadGraph} to simulate $pp \rightarrow ZZ \rightarrow 2e2\nu$ background events (\cite{sec:zzbackground}). 
