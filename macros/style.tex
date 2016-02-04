@@ -1,5 +1,22 @@
 \pagestyle{headings}
 
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\usepackage{amsmath}
+\usepackage{accents}
+\usepackage{multirow}
+\newlength{\dhatheight}
+\newcommand{\doublehat}[1]{%
+    \settoheight{\dhatheight}{\ensuremath{\hat{#1}}}%
+    \addtolength{\dhatheight}{-0.35ex}%
+    \hat{\vphantom{\rule{1pt}{\dhatheight}}%
+    \smash{\hat{#1}}}}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+
 % Note that the line below could be modified to suit a
 % particular system since the "geometry" package behaves
 % differently in Unix, Windows and Mac, especially for the
