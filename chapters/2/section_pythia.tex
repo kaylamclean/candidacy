@@ -1,2 +1,28 @@
-\section{\textsc{Pythia}}
+\section{\textsc{Pythia} and dark matter simulation}
 \label{sec:pythia}
+
+After success in learning how to use \textsc{MadGraph} to simulate the largest background to the mono-$Z$ analysis, the next logical step was moving on to using \textsc{Pythia 8} in conjunction with \textsc{MadGraph 5} for simulating dark matter events. The motivation at the time was that it would be useful to have the ability to generate our own dark matter samples without the need to run the full ATLAS simulation and reconstruction. Instead, \textsc{MadGraph} and \textsc{Pythia} could be used, followed by running the events through a detector simulator, such as \textsc{Delphes}. This would take considerably less time compared to generating full, official ATLAS samples. I spent some time with \textsc{Delphes} as well, but the majority of my work was spent using \textsc{MadGraph} and \textsc{Pythia}.
+
+\textsc{Pythia} is a widely used generator in the ATLAS experiment. It is used to simulate the soft processes of a hard scatter process, including parton showering, initial/final state radiation, and the underlying process of the event. The output from \textsc{MadGraph} can be fed directly to \textsc{Pythia} in order to produce complex, multi-hadronic events that are meant to represent the results of real collisions.
+
+As I experimented with \textsc{Pythia} I focused on reproducing our MC15b samples that were produced using ATHENA. This meant using the exact same methods as were done in the MC15b generation, but instead using standalone \textsc{MadGraph}+\textsc{Pythia}. \textsc{Pythia} is an extremely complex program with many parameters and settings available. Many of these involve physical processes that are not well understood, such as hadronization, which involves non-perturbative QCD physics. \textsc{Pythia} also supports tunes, sets of multiple parameters that individually may be correlated or anti-correlated, and varying them independently would lead to non-physical results. I learned that great care must be taken when using tunes, as defining the tune late in the setup would override settings that may have been previously set. 
+
+In addition to its complex settings, obtaining output in a .root format from \textsc{Pythia} also proved to be non-trivial. \textsc{Pythia} 8 comes with several example macros for running event generation and outputting to a given format. It is possible for it to write directly to a ROOT tree, but after getting this working it was realized that the tree structure was extremely complicated and hard to navigate. It was decided to output to .lhe format and then convert to .root format using a ROOT package called \texttt{ExRootAnalysis}; I had done this previously with \textsc{MadGraph} output. However using \texttt{ExRootAnalysis} to convert to .root format did not preserve the complicated particle record provided by \textsc{Pythia}'s .lhe output format. After converting, I was only able to access particles with statuses of 1 (final state) or 2 (intermediate). This made comparing my events with the MC15b samples more difficult than anticipated. The MC15b samples included particles with status codes of 1 and also other intermediate status codes; when selecting leading and subleading leptons, only the intermediate status particles remained. In addition, some events didn't have any status 1 particles, and it was difficult to investigate what exactly had been generated using ATHENA.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Figures/Mll.pdf}
+\caption{$Z$ mass spectrum for the vector-mediated $m_{\text{DM}}$ = 50 GeV, $m_{\text{med}}$ = 95 GeV sample. The left plot shows the comparison of strictly status 1 leptons from both samples. The right plot shows leptons in the MC15b sample with mostly intermediate status codes and status 2 particles from the samples generated with standalone \textsc{MadGraph}+\textsc{Pythia}.}
+\label{fig:Mll}
+\end{figure}
+
+\noindent Figure \ref{fig:Mll} shows the $M_{\ell\ell}$ distributions I obtained when plotting only status 1 (left) and status 2 (right) leptons from my samples. There was very good agreement for the distributions obtained from the leading and subleading leptons because the MC15b samples had mostly intermediate particles, including some coming directly from the hard scatter. It is not clear why these particles were included in the sample. When I chose to only plot status 1 particles from the MC15b sample, I still did not observe good agreement with some of the distributions, including the $Z$ mass shown in the figure.
+
+- comparing status 1 to status 1 also led to good agreement but still inconsistencies in Z mass peak, etc.
+- also getting rid of low pT leptons helped a bit
+- final plots show only status 1 particles with a 4 GeV cutoff for leptons
+
+- this was abandoned due to time
+- in hindsight, would have tried to follow .hepmc route to preserve particle status codes (possibly)
+
+- requires more complicated analysis code
