@@ -12,17 +12,10 @@ In addition to its complex settings, obtaining output in a .root format from \te
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{Figures/Mll.pdf}
-\caption{$Z$ mass spectrum for the vector-mediated $m_{\text{DM}}$ = 50 GeV, $m_{\text{med}}$ = 95 GeV sample. The left plot shows the comparison of strictly status 1 leptons from both samples. The right plot shows leptons in the MC15b sample with mostly intermediate status codes and status 2 particles from the samples generated with standalone \textsc{MadGraph}+\textsc{Pythia}.}
+\caption[$Z$ mass spectrum for the vector-mediated $m_{\text{DM}}$ = 50 GeV, $m_{\text{med}}$ = 95 GeV sample as obtained from \textsc{Pythia}]{$Z$ mass spectrum for the vector-mediated $m_{\text{DM}}$ = 50 GeV, $m_{\text{med}}$ = 95 GeV sample as obtained from \textsc{Pythia}. The left plot shows the comparison of strictly status 1 leptons from both samples. The right plot shows leptons in the MC15b sample with mostly intermediate status codes and status 2 particles from the samples generated with standalone \textsc{MadGraph}+\textsc{Pythia}.}
 \label{fig:Mll}
 \end{figure}
 
-\noindent Figure \ref{fig:Mll} shows the $M_{\ell\ell}$ distributions I obtained when plotting only status 1 (left) and status 2 (right) leptons from my samples. There was very good agreement for the distributions obtained from the leading and subleading leptons because the MC15b samples had mostly intermediate particles, including some coming directly from the hard scatter. It is not clear why these particles were included in the sample. When I chose to only plot status 1 particles from the MC15b sample, I still did not observe good agreement with some of the distributions, including the $Z$ mass shown in the figure.
+\noindent Figure \ref{fig:Mll} shows the $M_{\ell\ell}$ distributions I obtained when plotting only status 1 (left) and status 2 (right) leptons from my samples. There was very good agreement for the distributions obtained from the leading and subleading leptons because the MC15b samples had mostly intermediate particles, including some coming directly from the hard scatter. It is not clear why these particles were included in the sample, however. When I chose to only plot status 1 particles from the MC15b sample, although some distributions were in agreement, some did not agree, including the $Z$ mass shown in the Figure \ref{fig:Mll}.
 
-- comparing status 1 to status 1 also led to good agreement but still inconsistencies in Z mass peak, etc.
-- also getting rid of low pT leptons helped a bit
-- final plots show only status 1 particles with a 4 GeV cutoff for leptons
-
-- this was abandoned due to time
-- in hindsight, would have tried to follow .hepmc route to preserve particle status codes (possibly)
-
-- requires more complicated analysis code
+Despite this, before knowing about the particle code mismatches, the goal of obtaining the same distributions as for the MC15b samples forced me to dig deep into \textsc{Pythia} and try different things (running different versions, applying settings in different orders, etc.). In addition, analyzing \textsc{Pythia} output was much more complicated than \textsc{MadGraph} output, and modifying my program to run an analysis correctly was a very good exercise. 
