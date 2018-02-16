@@ -1,16 +1,59 @@
-\startchapter{Previous Work}
+\startchapter{The Mono-$Z(\ell\ell)$ Search}
 \label{chapter:prevWork}
 
+% --------------------------------------------------------------------------------------
+\section{Analysis Overview}
+
+- signal simulation\\
+- major backgrounds (pie chart?)\\
+- systematic errors\\
+- limit setting on MET distribution\\
+
+% --------------------------------------------------------------------------------------
 \section{Truth Studies} 
 
-\subsection{Estimation of Theory Systematics on Signal Acceptance}
+- explain difference between reconstructed and truth samples\\
+- motivation: at generator level we ignore detector effects; also sometimes cannot have access to many reconstructed samples, we can produce them ourselves\\
+- MonoZTruthUVic framework for applying truth-level analysis cuts\\
 
+% -------------------------------------------
+\subsection{Theory Systematics on the Signal Acceptance}
+- QCD renormalization/factorization scale systematics\\
+- parton showering systematics\\
+- mention possibility to use weights instead\\
+
+% --------------------------------------------------------------------------------------
 \section{Estimation of the $Z$+jets Background}
 
+% -------------------------------------------
 \subsection{ABCD Method}
 
+- overview of the method\\
+- challenges (correlations, low stats, large systematics)\\
+- mention methodology used for EPS (?)\\
+
+% -------------------------------------------
 \subsection{$\gamma$+jets Technique}
 
+- overview of the method\\
+- challenges (trial and error with reweighting in 1D, 2D, or 2x1D; smearing, resolution of the Z better than the photon)\\
+
+% --------------------------------------------------------------------------------------
 \section{Dark Matter Limit Setting}
 
-\section{Qualification Task: Calibration Studies on Close-By Jets}
+- some theory of hypothesis testing (binned likelihoods, p-values, discovery vs upper limits)\\
+- MonoZLimitsUVic framework for setting limits\\
+- show dmA and dmV results from ICHEP and EPS\\
+- mention rescaled NLO limits for DM summary paper (?)\\
+- show 2HDMa results for DM summary paper\\
+
+% -------------------------------------------
+\subsection{Mass Point Emulation}
+
+- create a finer grid of points without using reconstructed samples\\
+- studies done to show that it's possible to scale from dmA -> dmA in the on-shell region for a fixed mediator mass\\
+- studies also done to show it's possible to scale dmA -> dmV\\
+
+% --------------------------------------------------------------------------------------
+\section{Analysis Code}
+- mention efforts to update/improve our code (?)
