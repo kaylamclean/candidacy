@@ -4,34 +4,15 @@
 % --------------------------------------------------------------------------------------
 \section{Analysis Overview}
 
-There are several important aspects of the mono-$Z(\ell\ell)$ analysis. Once data is collected and available to analyze, one of the the first steps is to optimize the event selection for the specific signal being searched for. For the mono-$Z(\ell\ell)$ search, events are selected in order to isolate two electrons or muons, with invariant mass close to the $Z$ mass, recoiling against a sizeable $E_{T}^{\text{miss}}$. The most important kinematic variables are chosen and are applied to the objects reconstructed from ATLAS data. Table \ref{tab:selections} summarizes the event selection requirements for the analysis of the 2015+2016 dataset.
+There are several important aspects of the mono-$Z$ search. One of the the first steps of the analysis is to optimize the event selection for the specific signal being considered in the search. A \textit{signal region} must be chosen using some metric that optimizes the amount of signal compared to background. Background events are caused by SM processes that produce the same signature as the dark matter signal. Ideally such processes should be as suppressed as possible in the signal region. Event selections are optimized using Monte Carlo (MC) simulated events for signal and backgrounds. ATLAS MC are sophisticated and include effects from the detector, such as energy resolution. In general, events are selected in order to isolate a $e^+e^-$ or $\mu^+\mu^-$ pair that have an invariant mass close to the $Z$ and are recoiling against a sizeable $E_{T}^{\text{miss}}$ vector. The most important kinematic variables are identified and calculated using reconstructed objects as measured in the ATLAS detector (approximate in MC). Additional selection requirements are used to reduce background contributions while attempting to preserve signal. Two signal regions are used in the mono-$Z$ analysis, one where $e^+e^-$ events are selected and the other where $\mu^+\mu^-$ events are selected.
 
-\begin{table}[htbp]
-\begin{center}
-\begin{tabular}{c|c}
-\hline
-\hline
-Object/Variable & Selection  \\ \hline
-Lepton pair  &
-Exactly one $e^+e^-$ or $\mu^+\mu^-$ pair with leading\\ & (subleading) lepton $p_T$ > 20 (30) GeV \\ \hline
-Third lepton &  Veto any additional leptons with $\pt > $ 7 GeV\\ \hline
-$m_{\ell\ell}$ & 76-106 GeV  \\ \hline
-$E_{T}^{\text{miss}}$ & $> 90$ GeV \\ \hline
-$\Delta R_{\ell\ell}$ & < 1.8  \\ \hline
-$|\Delta\phi(p_T(Z),E_{T}^{\text{miss}})|$ & > 2.7  \\ \hline
-Fractional $p_T$ difference &  < 0.2  \\ \hline
-$E_{T}^{\text{miss}} / H_\text{T}$ & > 0.6 \\ \hline
-b-jets & Veto b-tagged jets  \\ \hline \hline
-\end{tabular}
-\end{center}
-\caption{Event selection cuts used for the mono-$Z(\ell\ell)$ analysis on the 2015+2016 dataset.}
-\label{tab:selections}
-\end{table}
+Another crucial part of the analysis is in-situ background estimation. Once a signal region has been defined, data can then be used to estimate the dominant backgrounds in that region. When possible, it is always preferable to use data instead of MC estimations for backgrounds. 
 
-- signal simulation\\
 - major backgrounds (pie chart?)\\
 - systematic errors\\
 - limit setting on MET distribution\\
+- mention results so far for ICHEP 2016 and EPS 2017, and for DM summary paper\\
+- mention full Run 2 dataset prospects?\\
 
 % --------------------------------------------------------------------------------------
 \section{Truth Studies} 
