@@ -203,15 +203,18 @@ Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 data
 \label{fig:2hdma}
 \end{figure}
 
-In the mass limits above, the red points indicate the masses at which there are reconstructed signal samples. The blue points indicate \textit{emulated} points. Mass point emulation is performed to create a finer grid of signal samples without using reconstructed samples. The exclusion contour may look jagged in areas with a coarse grid of signal points. By adding in emulated points, the contour can be made smoother and more physical without going through the tedious process of requesting additional reconstructed MC samples.
+In the mass limits above, the red points indicate the masses at which there are reconstructed signal samples. The blue points indicate \textit{emulated} points. Mass point emulation is performed to create a finer grid of signal samples without using reconstructed samples. The exclusion contour may look jagged in areas with a coarse grid of signal points. By adding in emulated points, the contour can be made smoother and more physical without going through the tedious process of requesting additional reconstructed MC samples. The method discussed here has been used for the LO simplified models with 36.1 fb$^{-1}$; emulation for the 2HDM+PS model is more complicated and is not discussed here. 
 
+The validity of emulating signal samples relies on the assumption that the kinematics (i.e. the $E_T^{miss}$ distributions) of the signal does not depend on $m_\chi$ in the on-shell region (where $m_\text{med} > 2 m_\chi$). If this is true, then the $E_T^{miss}$ distribution for a reconstructed sample at a given $m_\text{med}$ can be used as the $E_T^{miss}$ distribution for other signal samples with the same $m_\text{med}$. However, the $E_T^{miss}$ distribution for the emulated sample must be scaled by the ratio of cross sections $\sigma_\text{reco}/\sigma_\text{emul}$. So, as long as the grid of reconstructed points is fine along $m_\text{med}$, additional points with different $m_\chi$ can be emulated just by using the cross sections.
 
+For the axial-vector model, studies on the signal acceptance were been performed and verified that the signal acceptance is flat for a fixed $m_\text{med}$. For the vector model, an additional complication was that we had a fairly coarse granularity of reconstructed points along $m_\text{med}$. Because of this, we exploited the similar kinematics between the axial-vector and vector signals and performed emulation from axial-vector $\rightarrow$ vector samples. Emulation for both models has become customary in the mono-$Z$ analysis and will continue to be used moving forward towards the full dataset.
 
-
-- studies done to show that it's possible to scale from dmA -> dmA in the on-shell region for a fixed mediator mass\\
-- studies also done to show it's possible to scale dmA -> dmV\\
 
 % --------------------------------------------------------------------------------------
 \section{Analysis Software}
 \label{sec:code}
-- mention efforts to update/improve our code (?)
+
+The MonoZUVic software package is the core of the analysis and has been developed by the UVic group for the past few years. Throughout the evolution of the analysis, contributions have been made towards writing and maintaining the software. The software must be capable of running the entire analysis, including object (electron, muon, jet) calibrations/corrections/selections, removal of overlaps between objects, applying event selections, calculating event weights and kinematic variables, evaluating experimental systematics, and in the end producing trees/histograms for data and MC. Things like calibration recommendations and data formats are in flux quite frequently, and diligent efforts are made to keep the code updated. The software is also cross checked with other groups running the analysis to ensure updated calibrations, squash bugs, etc. The MonoZTruthUVic and MonoZLimitsUVic packages, mentioned briefly above, were written to perform truth-level studies and produce exclusion limits. These packages are also be maintained alongside MonoZUVic. Contributions have also been made to design overhauls in the framework as the analysis has evolved and improved.
+
+
+
