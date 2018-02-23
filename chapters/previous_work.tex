@@ -1,39 +1,88 @@
 \startchapter{The Mono-$Z(\ell\ell)$ Search}
 \label{chapter:prevWork}
 
+This chapter summarizes the previous work done. Section \ref{sec:analysis} gives an overview of the analysis, while Sections \ref{sec:truth} - \ref{sec:code} discuss specific contributions in more detail.
+
 % --------------------------------------------------------------------------------------
 \section{Analysis Overview}
+\label{sec:analysis}
 
-There are several important aspects of the mono-$Z$ search. One of the the first steps of the analysis is to optimize the event selection for the specific signal being considered in the search. A \textit{signal region} must be chosen using some metric that optimizes the amount of signal compared to background. Background events are caused by SM processes that produce the same signature as the dark matter signal. Ideally such processes should be as suppressed as possible in the signal region. Event selections are optimized using Monte Carlo (MC) simulated events for signal and backgrounds. ATLAS MC are sophisticated and include effects from the detector, such as energy resolution. In general, events are selected in order to isolate a $e^+e^-$ or $\mu^+\mu^-$ pair that have an invariant mass close to the $Z$ and are recoiling against a sizeable $E_{T}^{\text{miss}}$ vector. The most important kinematic variables are identified and calculated using reconstructed objects as measured in the ATLAS detector (approximate in MC). Additional selection requirements are used to reduce background contributions while attempting to preserve signal. Two signal regions are used in the mono-$Z$ analysis, one where $e^+e^-$ events are selected and the other where $\mu^+\mu^-$ events are selected.
+There are several important aspects of the mono-$Z$ search. The analysis has been repeated fully twice during Run 2, once with the 2015 dataset (3.2 fb$^{-1}$) and again with the 2015+2016 dataset (36.1 fb$^{-1}$). The next result will not be ready until the full 2015-2018 Run 2 dataset is collected. The techniques discussed in this section are mainly based on the previous results from the 2015+2016 dataset. 
 
-Another crucial part of the analysis is in-situ background estimation. Once a signal region has been defined, data can then be used to estimate the dominant backgrounds in that region. When possible, it is always preferable to use data instead of MC estimations for backgrounds. 
+One of the the first steps of the analysis is to optimize the event selection for the specific signal being considered in the search. A \textit{signal region} must be chosen using some metric that optimizes the amount of signal compared to background. Background events are caused by SM processes that produce the same signature as the dark matter signal. Ideally such processes should be as suppressed as possible in the signal region. Event selections are optimized using Monte Carlo (MC) simulated events for signal and backgrounds. ATLAS MC are sophisticated and include effects from the detector, such as energy resolution. In general, events are selected in order to isolate a $e^+e^-$ or $\mu^+\mu^-$ pair that have an invariant mass close to the $Z$ and are recoiling against a sizeable $E_{T}^{\text{miss}}$ vector. The most important kinematic variables are identified and calculated using reconstructed objects as measured in the ATLAS detector (approximate in MC). Additional selection requirements are used to reduce background contributions while attempting to preserve signal. Two signal regions are used in the mono-$Z$ analysis, one where $e^+e^-$ events are selected and the other where $\mu^+\mu^-$ events are selected.
 
-- major backgrounds (pie chart?)\\
-- systematic errors\\
-- limit setting on MET distribution\\
-- mention results so far for ICHEP 2016 and EPS 2017, and for DM summary paper\\
-- mention full Run 2 dataset prospects?\\
+Another crucial part of the analysis is in-situ background estimation. Once a signal region has been defined, data can then be used to estimate the dominant backgrounds in that region. When possible it is always preferable to use data instead of MC estimations. This is typically done by defining a control region that has a very high purity in background events, and then somehow transferring the estimate into the signal region. The major backgrounds in the analysis are described below with their percent contribution from the 2015+2016 result. They all emulate the signal by producing $\ell\ell+E_T^\text{miss}$. All backgrounds except for the $ZZ$ background are estimated from data.
+\begin{enumerate}
+	\item	 $ZZ$ \rightarrow \ell \ell \nu \nu$ (56\%): Dominant, irreducible background. Estimated entirely with MC. 
+	\item	 $WZ \rightarrow \ell \nu \ell \ell$ (27\%): Lepton from the $W$ is not reconstructed. 
+	\item $Z$+jets (8\%): Jet(s) are mismeasured as fake $E_T^\text{miss}$. 
+	\item $WW$, $Wt$, $t\bar{t}$, and $Z\rightarrow \tau \tau$ (7\%): Lepton pair does not come from a $Z$.
+	\item $W$+jets ($<1\%$): Lepton is misidentified from a jet.
+\end{enumerate}
+
+\noindent The data-driven estimation techniques for each of the backgrounds are complex and are not discussed in detail here. Previous work on the estimation of the $Z$+jets background is discussed ahead.
+
+There are several sources of systematic errors that must be considered in any ATLAS analysis. Experimental systematics come from detector effects, such as the uncertainty in identifying an electron, energy uncertainties due to resolution effects, etc. These systematics are applied to MC samples. Data-driven background estimates will have systematic errors associated with the specific estimation technique. These types of systematics are often the dominant source of systematic uncertainties. Finally, there are theoretical systematics associated with the simulated dark matter signal, including errors from QCD, PDF, and parton showering effects. These will be discussed in more detail in the following section.
+
+After defining a signal region, estimating backgrounds in that signal region, and accounting for the systematic uncertainties of the analysis, the signal region is \textit{unblinded} and the agreement between observed data and expected background estimates is quantified. In the mono-$Z$ analysis the $E_T^\text{miss}$ is the distribution of interest, where a dark matter signal could manifest. If an excess in data is found then there is potential for a discovery. However, as in past iterations of the analysis, if no excess is seen then limits can be set on the dark matter model being studied. This is discussed in detail in the final section of this chapter.
+
 
 % --------------------------------------------------------------------------------------
 \section{Truth Studies} 
+\label{sec:truth}
 
-- explain difference between reconstructed and truth samples\\
-- motivation: at generator level we ignore detector effects; also sometimes cannot have access to many reconstructed samples, we can produce them ourselves\\
-- MonoZTruthUVic framework for applying truth-level analysis cuts\\
+Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
+
+A framework has been adapted, called MonoZTruthUVic, for applying truth-equivalent analysis cuts to truth samples. This allows for the analysis to be reproduced at the truth-level. This is useful for several reasons and allows us to estimate how many signal events could be seen in the signal region. 
 
 % -------------------------------------------
-\subsection{Theory Systematics on the Signal Acceptance}
-- QCD renormalization/factorization scale systematics\\
-- parton showering systematics\\
-- mention possibility to use weights instead\\
+\subsection{Theoretical Systematics on the Signal Acceptance}
+
+An important study that must be performed at the truth-level is the estimation of theoretical uncertainties on the signal \textit{acceptance}, the number of signal events that end up in the signal regio. There are potentially significant sources of systematic uncertainties from theory that must be considered. It should be noted that systematics from uncertainties in the parton distribution function (PDF) are evaluated in the analysis but are not discussed in detail here. 
+
+The signal acceptance depends on two scales from quantum chromodynamics (QCD) known as the renormalization and factorization scales, $\mu_r$ and $\mu_f$. Both scales are arbitrary and arise from finite order perturbation theory. $\mu_r$ is related to the renormalization of ultraviolet divergences, and $\mu_f$ qualitatively corresponds to the resolution at which the proton is being probed. The cross section for some hard process depends on these scales according to
+
+\begin{equation}
+\sigma = \int \text{d}x_1 \text{d}x_2 f_1(x_1, \mu_f^2) f_2 (x_2, \mu_f^2) \hat{\sigma}(x_1 p_1, x_2 p_2, \alpha_s(\mu_r), Q^2, \mu_r^2, \mu_f^2),
+\end{equation}
+
+\noindent where partons 1 and 2 have PDFs $f_1$ and $f_2$ and momentum fractions $x_1 p_1$ and $x_2 p_2$ respectively. $Q$ is the scale of the hard scatter process determined by the cross section $\hat{\sigma}$.
+In short, by simulating dark matter MC with different values for $\mu_f$ and $\mu_r$ and then applying truth-level analysis cuts, the systematic error on the acceptance due to the choice of scales can be quantified. The convention is to generate two variational samples with $\mu_r = \mu_f$, where the scales are doubled in one sample and halved in the other. Then the signal acceptance for both variational samples is calculated and compared to the nominal acceptance. The largest change is taken as the systematic error. This systematic has been observed to be independent of $m_{DM}$, so the errors are evaluated as a function of $m_\text{med}$. An example of the errors previously used for axial-vector signals is illustrated in Figure \ref{fig:qcd}. These errors are on the order of 1-2\%.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.75\textwidth]{Figures/qcd.png}
+\caption{QCD scale uncertainties as a function of mediator mass for axial-vector signals. Red and blue points correspond to errors obtained from the $ee$ and $\mu\mu$ signal regions respectively.}
+\label{fig:qcd}
+\end{figure}
+
+The other source of theoretical uncertainty on the signal acceptance comes from parton showering effects. In the MC samples used by ATLAS, after the hard scatter is simulated it is run through a showering simulator called Pythia. Pythia adds in several physical effects such as the underlying event (UE), initial and final state radiation (ISR and FSR) of extra jets, and multiple parton interactions (MPI). These are complicated processes governed by QCD and the number of parameters in Pythia that can be set are extensive. To simplify this, ATLAS has a standardized Pythia \textit{tune}, i.e. a set of parameters that serve as the default to be used in MC showering. The signal acceptance depends on the choice of this tune. The uncertainty is evaluated using a prescription whereby ten variations are used to account for each general effect. As for the QCD scale uncertainties, variational MC samples are produced according to each variation, and the difference in the signal acceptance is evaluated compared to the nominal showering. These systematics are typically on the order of 5\%.
+
 
 % --------------------------------------------------------------------------------------
 \section{Estimation of the $Z$+jets Background}
+\label{sec:zjets}
 
 % -------------------------------------------
 \subsection{ABCD Method}
 
-- overview of the method\\
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{Figures/abcd2.png}
+\caption{Scheme of the ABCD method.}
+\label{fig:abcd}
+\end{figure}
+
+One data-driven technique for estimating the $Z$+jets background is the ABCD method. This was the primary estimation method used for the 2015 result. A schematic of the method is shown in Figure \ref{fig:abcd}. Four regions are defined using two of the kinematic variables from the event selection. This pair of variables is chosen to optimize event statistics in the sideband regions (B, C, and D) and to minimize the correlation between them. Region A is the signal region, the target region that we are trying to estimate the background in. The number of background events in the sidebands are used to estimate the number of background events in A using the assumption that $N_A/N_C = N_B/N_D$. This is true if there is no correlation between the two variables. Then the number of $Z$+jets events in A is given by:
+
+\begin{equation}
+N_\text{A}^\text{est} = N_\text{C}^\text{obs,corr} \times \frac{N_\text{B}^\text{obs,corr}}{N_\text{D}^\text{obs,corr}}
+\end{equation}
+
+\noindent $N_\text{B}$, $N_\text{C}$, and $N_\text{D}$ are the observed number of events in each sideband control region with non-$Z$+jets events subtracted (using MC).
+
+The main challenges for this method come from having correlations between the two variables and having enough statistics in data in all of the sidebands. The validity of this technique primarily comes from looking at the equivalence of the three ratios $N_\text{A}/N_\text{C}$ (MC), $N_\text{B}/N_\text{D}$ (MC), and $N_\text{B}/N_\text{D}$ (data).
+
 - challenges (correlations, low stats, large systematics)\\
 - mention methodology used for EPS (?)\\
 
@@ -45,6 +94,7 @@ Another crucial part of the analysis is in-situ background estimation. Once a si
 
 % --------------------------------------------------------------------------------------
 \section{Dark Matter Limit Setting}
+\label{sec:limits}
 
 - some theory of hypothesis testing (binned likelihoods, p-values, discovery vs upper limits)\\
 - MonoZLimitsUVic framework for setting limits\\
@@ -61,4 +111,5 @@ Another crucial part of the analysis is in-situ background estimation. Once a si
 
 % --------------------------------------------------------------------------------------
 \section{Analysis Software}
+\label{sec:code}
 - mention efforts to update/improve our code (?)
