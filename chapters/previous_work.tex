@@ -24,8 +24,14 @@ Another crucial part of the analysis is in-situ background estimation. Once a si
 
 There are several sources of systematic errors that must be considered in any ATLAS analysis. Experimental systematics come from detector effects, such as the uncertainty in identifying an electron, energy uncertainties due to resolution effects, etc. These systematics are applied to MC samples. Data-driven background estimates will have systematic errors associated with the specific estimation technique. These types of systematics are often the dominant source of systematic uncertainties. Finally, there are theoretical systematics associated with the simulated dark matter signal, including errors from QCD, PDF, and parton showering effects. These will be discussed in more detail in the following section.
 
-After defining a signal region, estimating backgrounds in that signal region, and accounting for the systematic uncertainties of the analysis, the signal region is \textit{unblinded} and the agreement between observed data and expected background estimates is quantified. In the mono-$Z$ analysis the $E_T^\text{miss}$ is the distribution of interest, where a dark matter signal could manifest. If an excess in data is found then there is potential for a discovery. However, as in past iterations of the analysis, if no excess is seen then limits can be set on the dark matter model being studied. This is discussed in detail in the final section of this chapter.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{Figures/srEPS.png}
+\caption{Text}
+\label{fig:srEPS}
+\end{figure}
 
+After defining a signal region, estimating backgrounds in that signal region, and accounting for the systematic uncertainties of the analysis, the signal region is \textit{unblinded} and the agreement between observed data and expected background estimates is quantified. In the mono-$Z$ analysis the $E_T^\text{miss}$ is the distribution of interest, where a dark matter signal could manifest. The signal region $E_T^\text{miss}$ distributions from the 2015+2016 analysis are shown in Figure \ref{fig:srEPS}. If an excess in data is found then there is potential for a discovery. However, as in past iterations of the analysis, if no excess is seen then limits can be set on the dark matter model being studied. This is discussed in detail in the final section of this chapter.
 
 % --------------------------------------------------------------------------------------
 \section{Truth Studies} 
@@ -81,14 +87,15 @@ N_\text{A}^\text{est} = N_\text{C}^\text{obs,corr} \times \frac{N_\text{B}^\text
 
 \noindent $N_\text{B}$, $N_\text{C}$, and $N_\text{D}$ are the observed number of events in each sideband control region with non-$Z$+jets events subtracted (using MC).
 
-The main challenges for this method come from having correlations between the two variables and having enough statistics in data in all of the sidebands. The validity of this technique is evaluated by looking at the agreement between the three ratios $N_\text{A}/N_\text{C}$ (MC), $N_\text{B}/N_\text{D}$ (MC), and $N_\text{B}/N_\text{D}$ (data). If the method works perfectly then these ratios will agree. In addition, the agreement of these ratios should agree as the other event selections are applied. However, correlations cause deviations in the agreement, and low statistics in one or more of the sidebands can lead to large errors on the ratios after all selections are applied. And, if the ratios change with other selections, this suggests more complicated correlations with other variables that enhance the correlation between the two variables used for the method. These effects are all taken into account with systematic errors that are evaluated to be about $\pm$70\% on the $Z$+jets estimate. These turned out to be the dominant uncertainties in the analysis for the 2015 result.
+The main challenges for this method come from having correlations between the two variables and having enough statistics in data in all of the sidebands. The validity of this technique is evaluated by looking at the agreement between the three ratios $N_\text{A}/N_\text{C}$ (MC), $N_\text{B}/N_\text{D}$ (MC), and $N_\text{B}/N_\text{D}$ (data). If the method works perfectly then these ratios will agree. In addition, the agreement of these ratios should agree as the other event selections are applied. However, correlations cause deviations in the agreement, and low statistics in one or more of the sidebands can lead to large errors on the ratios after all selections are applied. And, if the ratios change with other selections, this suggests more complicated correlations with other variables that enhance the correlation between the two variables used for the method. These effects are all taken into account with systematic errors that are evaluated to be about $\pm$70\% on the $Z$+jets estimate. These turned out to be dominant uncertainties in the analysis for the 2015 result.
 
 % -------------------------------------------
 \subsection{$\gamma$+jets Technique}
 
-The $Z$+jets technique had to be modified for the 2015+2016 result. The event selection was reoptimized and introduced new variables, and correlations had a more pronounced effect in the ABCD method. Becau
+The $Z$+jets technique had to be modified for the 2015+2016 result. The event selection was reoptimized and introduced new variables, and correlations had a more pronounced effect in the ABCD method. Because of this, a second technique was developed alongside a modified ABCD method. The technique is known as the $\gamma$+jets reweighting method.
 
-- mention methodology used for EPS (?)\\
+
+
 - overview of the method\\
 - challenges (trial and error with reweighting in 1D, 2D, or 2x1D; smearing, resolution of the Z better than the photon)\\
 
@@ -96,8 +103,71 @@ The $Z$+jets technique had to be modified for the 2015+2016 result. The event se
 \section{Dark Matter Limit Setting}
 \label{sec:limits}
 
-- some theory of hypothesis testing (binned likelihoods, p-values, discovery vs upper limits)\\
-- MonoZLimitsUVic framework for setting limits\\
+In the case that no excess is observed in data, upper limits are set on the signal strength for each of the dark matter models. These are then translated into limits on the masses of the dark matter particles, $m_\chi$ and $m_\text{med}$. Hypothesis tests are performed using HistFitter. The signal region $E_T^\text{miss}$ distributions are inputted to HistFitter for signal, backgrounds, and all systematic uncertainties (also known as nuisance parameters or NPs). HistFitter calculates upper limits using the CL$_{s}$ method~\cite{Cowan:2010js}, a standard in the ATLAS experiment. 
+
+The statistical analysis of the data uses a binned likelihood function constructed as the product of Poisson probability terms,
+\begin{equation}
+\mathcal{L} = 
+\text{Pois}(n|\mu s+b)\left[\prod_{b\in \text{bins}}^{n}
+\frac{\mu \nu_{b}^{\text{sig}} + \nu_{b}^{\text{bkg}}}{\mu s+b} \right],
+\end{equation}
+where $\mu$, the signal strength parameter, multiplies the expected signal yield $\nu_{b}^{\text{sig}}$ in each histogram bin $b$, and $\nu_{b}^{\text{bkg}}$ represents the background content for bin $b$. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of NPs $\vec{\theta}$, which are each parametrized by a Gaussian. 
+
+The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximized log-likelihood, $\mathcal{L}(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. The test statistic $\tilde q_\mu$ is then constructed based on the profile likelihood ratio:
+
+\begin{equation}
+\lambda(\mu) = \frac{\mathcal{L}(\mu, \hat{\hat{\boldsymbol{\theta}}})}{\mathcal{L}(\hat{\mu}, \hat{\boldsymbol{\theta}})}
+\label{eqn:proflike}
+\end{equation}
+
+\noindent $\hat{\hat{\boldsymbol{\theta}}}$ are the nuisance parameter values that maximize the likelihood for a given $\mu$. The level of compatibility is quantified using $\tilde q_\mu$, since larger values are interpreted as greater incompatibility between data and the assumed signal+background ($\mu=1$) hypothesis. The corresponding p-value, $p_\mu$, is defined as:
+
+\begin{equation}
+p_\mu = \int_{\tilde{q}_{\mu,\text{obs}}}^\infty f(\tilde{q}_\mu | \mu) \text{d}\tilde{q}_\mu
+\label{eqn:pmu}
+\end{equation}
+
+\noindent Here $f(\tilde{q}_\mu | \mu)$ is the probability density function of $\tilde{q}_\mu$ assuming the $\mu$ hypothesis, and $\tilde{q}_{\mu,\text{obs}}$ is the value of $\tilde{q}_\mu$ computed for the observed data.
+Asymptotic formulae~\cite{Cowan:2010js} are used to calculate the closed form for $f(\tilde{q}_\mu | \mu)$. $p_\mu$ can also be written as:
+
+\begin{equation}
+p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
+\end{equation}
+
+\noindent Performing exclusion tests with $p_{s+b}$ is known as the CL$_{s+b}$ method. This analysis uses the CL$_s$ method, where the p-value, or the ``CL$_s$ value,'' is defined as:
+
+\begin{equation}
+\text{CL}_s \equiv \frac{p_{s+b}}{1-p_b},
+\end{equation}
+
+\noindent where 
+
+\begin{equation}
+p_b = P(\tilde q_\mu \leq \tilde{q}_{\mu,\text{obs}} | b).
+\end{equation}
+
+Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% CL. The upper limits are then extracted from HistFitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
+
+
+
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/limits_dmA.pdf}
+        \caption{TODO}
+        \label{fig:limits_dmA}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/limits_dmA.pdf}
+        \caption{TODO}
+        \label{fig:limits_dmV}
+    \end{subfigure}
+    \caption{limits of amazing tings}\label{fig:limits}
+\end{figure}
+
 - show dmA and dmV results from ICHEP and EPS\\
 - mention rescaled NLO limits for DM summary paper (?)\\
 - show 2HDMa results for DM summary paper\\
