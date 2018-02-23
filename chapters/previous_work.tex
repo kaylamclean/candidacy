@@ -39,14 +39,11 @@ After defining a signal region, estimating backgrounds in that signal region, an
 
 Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
 
-A framework has been adapted, called MonoZTruthUVic, for applying truth-equivalent analysis cuts to truth samples. This allows for the analysis to be reproduced at the truth-level. This is useful for several reasons and allows us to estimate how many signal events could be seen in the signal region. 
-
-% -------------------------------------------
-\subsection{Theoretical Systematics on the Signal Acceptance}
+A framework has been adapted, called MonoZTruthUVic, for applying truth-equivalent analysis cuts to truth samples. This allows for the analysis to be reproduced at the truth-level. This is useful for several reasons and allows us to estimate how many signal events are theoretically predicted to be in the signal region.
 
 An important study that must be performed at the truth-level is the estimation of theoretical uncertainties on the signal \textit{acceptance}, the number of signal events that end up in the signal regio. There are potentially significant sources of systematic uncertainties from theory that must be considered. It should be noted that systematics from uncertainties in the parton distribution function (PDF) are evaluated in the analysis but are not discussed in detail here. 
 
-The signal acceptance depends on two scales from quantum chromodynamics (QCD) known as the renormalization and factorization scales, $\mu_r$ and $\mu_f$. Both scales are arbitrary and arise from finite order perturbation theory. $\mu_r$ is related to the renormalization of ultraviolet divergences, and $\mu_f$ qualitatively corresponds to the resolution at which the proton is being probed. The cross section for some hard process depends on these scales according to
+The signal acceptance depends on two scales from quantum chromodynamics (QCD) known as the renormalization and factorization scales, $\mu_r$ and $\mu_f$. Both scales are arbitrary and arise from finite order perturbation theory. $\mu_r$ is related to the renormalization of ultraviolet divergences, and $\mu_f$ qualitatively corresponds to the resolution at which the proton is being probed. The cross section for some hard process depends on these scales via
 
 \begin{equation}
 \sigma = \int \text{d}x_1 \text{d}x_2 f_1(x_1, \mu_f^2) f_2 (x_2, \mu_f^2) \hat{\sigma}(x_1 p_1, x_2 p_2, \alpha_s(\mu_r), Q^2, \mu_r^2, \mu_f^2),
@@ -57,7 +54,7 @@ In short, by simulating dark matter MC with different values for $\mu_f$ and $\m
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.75\textwidth]{Figures/qcd.png}
+\includegraphics[width=0.5\textwidth]{Figures/qcd.png}
 \caption{QCD scale uncertainties as a function of mediator mass for axial-vector signals. Red and blue points correspond to errors obtained from the $ee$ and $\mu\mu$ signal regions respectively.}
 \label{fig:qcd}
 \end{figure}
@@ -74,7 +71,7 @@ The other source of theoretical uncertainty on the signal acceptance comes from 
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.6\textwidth]{Figures/abcd2.png}
+\includegraphics[width=0.5\textwidth]{Figures/abcd2.png}
 \caption{Scheme of the ABCD method.}
 \label{fig:abcd}
 \end{figure}
@@ -98,6 +95,10 @@ The $Z$+jets technique had to be modified for the 2015+2016 result. The event se
 
 - overview of the method\\
 - challenges (trial and error with reweighting in 1D, 2D, or 2x1D; smearing, resolution of the Z better than the photon)\\
+
+\clearpage
+text
+\clearpage 
 
 % --------------------------------------------------------------------------------------
 \section{Dark Matter Limit Setting}
@@ -146,36 +147,67 @@ p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
 p_b = P(\tilde q_\mu \leq \tilde{q}_{\mu,\text{obs}} | b).
 \end{equation}
 
-Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% CL. The upper limits are then extracted from HistFitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
+Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% confidence level (CL). These upper limits on $\mu$ are then extracted from HistFitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
 
-
-
+Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 result on $m_\chi$ vs $m_\text{med}$ for axial-vector and vector mediators from the LO simplified models. The mass region inside the contour is excluded at the 95\% CL. The relic density line indicates where the particles and interactions of the model are by themselves sufficient for explaining the observed DM abundance in the universe.
 
 \begin{figure}[htb]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\textwidth]{Figures/limits_dmA.pdf}
-        \caption{TODO}
         \label{fig:limits_dmA}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/limits_dmA.pdf}
-        \caption{TODO}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Figures/limits_dmV.pdf}
         \label{fig:limits_dmV}
     \end{subfigure}
-    \caption{limits of amazing tings}\label{fig:limits}
+    \caption{Axial-vector (a) and vector (b) exclusion limits on $m_\chi$ vs $m_\text{med}$ with 36.1 fb$^{-1}$.}
+\label{fig:limits}
 \end{figure}
 
-- show dmA and dmV results from ICHEP and EPS\\
-- mention rescaled NLO limits for DM summary paper (?)\\
-- show 2HDMa results for DM summary paper\\
+The 2D mass limits have also been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The procedure for doing so is given in TODO. Figure \ref{fig:xsec} shows the recast mono-$Z$ limits for the spin-dependent (SD) and spin-independent (SI) scattering cross sections vs $m_\text{med}$. The limits shown are at the 90\% CL in accordance with the standard used by DD experiments. The coloured lines overlaid are limits set by DD experiments.
 
-% -------------------------------------------
-\subsection{Mass Point Emulation}
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Figures/xsec_dmA.pdf}
+        \label{fig:xsec_dmA}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Figures/xsec_dmV.pdf}
+        \label{fig:xsec_dmV}
+    \end{subfigure}
+    \caption{Axial-vector (a) and vector (b) exclusion limits on the DM-nucleon scattering cross section vs $m_\text{med}$ with 36.1 fb$^{-1}$.}
+\label{fig:xsec}
+\end{figure}
 
-- create a finer grid of points without using reconstructed samples\\
+Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 dataset. These are shown in Figure \ref{fig:2hdma}. Limits are set on $m_H$ vs $m_a$ as well as $\tan(\beta)$ vs $m_a$.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Figures/limits_2hdma.pdf}
+        \label{fig:limits_2hdma}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{Figures/limits_2hdma_tan.pdf}
+        \label{fig:limits_2hdma_tan}
+    \end{subfigure}
+    \caption{$m_H$ vs $m_a$ (a) and $\tan(\beta)$ vs $m_a$ (b) exclusion limits with 36.1 fb$^{-1}$.}
+\label{fig:2hdma}
+\end{figure}
+
+In the mass limits above, the red points indicate the masses at which there are reconstructed signal samples. The blue points indicate \textit{emulated} points. Mass point emulation is performed to create a finer grid of signal samples without using reconstructed samples. The exclusion contour may look jagged in areas with a coarse grid of signal points. By adding in emulated points, the contour can be made smoother and more physical without going through the tedious process of requesting additional reconstructed MC samples.
+
+
+
+
 - studies done to show that it's possible to scale from dmA -> dmA in the on-shell region for a fixed mediator mass\\
 - studies also done to show it's possible to scale dmA -> dmV\\
 
