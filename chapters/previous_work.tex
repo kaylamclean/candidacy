@@ -37,7 +37,7 @@ After defining a signal region, estimating backgrounds in that signal region, an
 \section{Truth Studies} 
 \label{sec:truth}
 
-Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
+Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator, typically \textsc{MadGraph}. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
 
 A framework has been adapted, called MonoZTruthUVic, for applying truth-equivalent analysis cuts to truth samples. This allows for the analysis to be reproduced at the truth-level. This is useful for several reasons and allows us to estimate how many signal events are theoretically predicted to be in the signal region.
 
@@ -59,7 +59,7 @@ In short, by simulating dark matter MC with different values for $\mu_f$ and $\m
 \label{fig:qcd}
 \end{figure}
 
-The other source of theoretical uncertainty on the signal acceptance comes from parton showering effects. In the MC samples used by ATLAS, after the hard scatter is simulated it is run through a showering simulator called Pythia. Pythia adds in several physical effects such as the underlying event (UE), initial and final state radiation (ISR and FSR) of extra jets, and multiple parton interactions (MPI). These are complicated processes governed by QCD and the number of parameters in Pythia that can be set are extensive. To simplify this, ATLAS has a standardized Pythia \textit{tune}, i.e. a set of parameters that serve as the default to be used in MC showering. The signal acceptance depends on the choice of this tune. The uncertainty is evaluated using a prescription whereby ten variations are used to account for each general effect. As for the QCD scale uncertainties, variational MC samples are produced according to each variation, and the difference in the signal acceptance is evaluated compared to the nominal showering. These systematics are typically on the order of 5\%.
+The other source of theoretical uncertainty on the signal acceptance comes from parton showering effects. In the MC samples used by ATLAS, after the hard scatter is simulated it is run through a showering simulator called \pythia. \pythia adds in several physical effects such as the underlying event (UE), initial and final state radiation (ISR and FSR) of extra jets, and multiple parton interactions (MPI). These are complicated processes governed by QCD and the number of parameters in \pythia that can be set are extensive. To simplify this, ATLAS has a standardized \pythia \textit{tune}, i.e. a set of parameters that serve as the default to be used in MC showering. The signal acceptance depends on the choice of this tune. The uncertainty is evaluated using a prescription whereby ten variations are used to account for each general effect. As for the QCD scale uncertainties, variational MC samples are produced according to each variation, and the difference in the signal acceptance is evaluated compared to the nominal showering. These systematics are typically on the order of 5\%.
 
 
 % --------------------------------------------------------------------------------------
@@ -90,16 +90,26 @@ The main challenges for this method come from having correlations between the tw
 \subsection{\gjets Technique}
 
 The \Zjets estimation had to be modified for the 2015+2016 result. The event selection was reoptimized and introduced new variables, and correlations had a more pronounced effect in the ABCD method. Because of this, a second technique was developed alongside a modified ABCD method. The technique is known as the \gjets reweighting method. The theory is described in \cite{Ask:2011xf} and the application has been adapted from an ATLAS SUSY search \cite{Galster:2151990}.
-% SUSY search: https://cds.cern.ch/record/2151990/files/ATL-COM-PHYS-2016-504.pdf?
 
-The \gjets 
+The \gjets method uses events with a photon and jets to estimate the fake \etmiss in \Zjets events. \gjets event topologies are similar to \Zjets events as they both consist of a well-measured \Z or photon recoiling against jets, and the \etmiss arises from jet mis-measurements. However there are some kinematic differences that need to be accounted for. This is done by reweighting the \gjets MC events to transport them to \Zjets MC events. Typically the \pt distribution of the photon is scaled to match the \pt distribution of the \Z (i.e. the \pt of the two leptons). The multiplicative factor needed to scale each \pt bin is used as an event weight for the \gjets events: 
 
-- overview of the method\\
-- challenges (trial and error with reweighting in 1D, 2D, or 2x1D; smearing, resolution of the Z better than the photon)\\
+\begin{equation}
+w(p_T^\gamma) = \frac{N_{Z\text{+jets}}(p_T^{\ell\ell})}{N_{\gamma\text{+jets}}(p_T^\gamma)}
+\end{equation}
 
-\clearpage
-text
-\clearpage 
+\noindent After the reweighting the \etmiss distribution for the \gjets events improves to match the \Zjets events (most obviously the tail increases at high \etmiss). The reweighting is applied fairly early in the event selection and then subsequent selections are applied; the agreement between \gjets and \Zjets events is monitored down to the signal region. Once reliable agreement is seen, then the method can be performed using data instead of MC.
+
+In the \monoZ analysis, \pt reweighting was not sufficient to have good agreement between \gjets and \Zjets events. Two approaches were taken in an attempt to rectify the remaining differences. The first is a photon smearing method as used in \cite{Galster:2151990}. This is done by looking at the component of the \etmiss along the \Z/photon direction, \etmisspar. The idea is that any difference in \etmisspar between \Zjets and \gjets events comes from lepton mis-measurements in the \Zjets events, leading to a larger \Z resolution compared to the photon. Hence the photon \pt and \etmisspar can be smeared to match the \Z resolution. This procedure was carried out in the \monoZ analysis but minimal improvements were seen because the photon and \Z were observed to have very similar resolutions. Therefore a second reweighting scheme was adapted to improve the agreement in the \etmiss distributions. Instead of only reweighting by \pt, a secondary reweighting is applied using another variable. Several variables were investigated; in the end \etmissht gave the best results. In addition, the reweighting could be applied using 2D weights or with two 1D (2x1D) weights. The 2D reweightings that were investigated gave the best \etmiss agreement, but the weights were unreliable due to limited statistics (e.g. weights in \pt and \etmissht bins). 2x1D reweighting schemes were also studied. Here an added complication is that the two variables that are reweighted are treated as uncorrelated, whereas for 2D reweighting the correlation is accounted for automatically. So in a 2x1D scheme, when reweighting the second variable, if the previously reweighted \pt distribution does not change, then the variables can be treated uncorrelated. This was seen in \pt and \etmissht. Also the weights with 2x1D schemes were observed to be far more reliable because of the higher statistics use in the weight calculation. This was further tested by splitting the \gjets MC into two statistically independent halves; one half was used to obtain the weights and the other half had them applied. The agreement between both reweighted halves of the \gjets sample was excellent. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Figures/gjets.png}
+% EPS paper: https://arxiv.org/abs/1708.09624
+\caption{\etmiss distributions for \gjets events (red) and \Zjets events (black without reweighting, blue with reweighting).}
+\label{fig:gjets}
+\end{figure}
+
+Due to time constraints in the analysis for the 2015+2016 result, the development of this technique is still under development and has yet to be tested on data. In the end a 2x1D reweighting scheme using \pt and \etmissht gave the best results in MC. Figure \ref{fig:gjets} shows the \etmiss distributions for \Zjets and reweighted \gjets events (at an early selection step). From \Zjets MC, the predicted yield in the \ee and \mm signal regions is approximately $0.45 \pm 0.90$ events. The best observed reweighted \gjets prediction is $2.0 \pm 0.1$. The results nearly agree within statistical errors, but differences are still observed in the \etmiss tail. Since this is the region of interest in the \monoZ search, care must be taken to study these differences and quantify the systematic errors from the reweighting technique. The next steps to improve the \gjets technique are discussed in the next chapter.
 
 % --------------------------------------------------------------------------------------
 \section{Dark Matter Limit Setting}
@@ -168,7 +178,7 @@ Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 result on 
 \label{fig:limits}
 \end{figure}
 
-The 2D mass limits have also been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The procedure for doing so is given in TODO. Figure \ref{fig:xsec} shows the recast \monoZ limits for the spin-dependent (SD) and spin-independent (SI) scattering cross sections vs \mmed. The limits shown are at the 90\% CL in accordance with the standard used by DD experiments. The coloured lines overlaid are limits set by DD experiments.
+The 2D mass limits have also been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The procedure for doing so is given in TODO. Figure \ref{fig:xsec} shows the recast \monoZ limits for the spin-dependent (SD) and spin-independent (SI) scattering cross sections vs \mmed. The cross section is SD if the isotope used in the DD experiment has an unpaired proton or neutron. The limits shown are at the 90\% CL in accordance with the standard used by DD experiments. The coloured lines overlaid are limits set by DD experiments.
 
 \begin{figure}[htb]
     \centering
