@@ -81,16 +81,34 @@ A model that is becoming popular in \monoX dark matter searches is known as the 
 \end{figure}
 
 \clearpage
+
 % --------------------------------------------------------------------------------------
 \section{The LHC and the ATLAS Detector}
 
-- introduce the LHC, define luminosity, mention beam energy, beam structure, ...\\
-- overview of four main detectors\\
-- summary of detector subsystems: inner detector, EM calorimeter, HAD calorimeter, muon spectrometer\\
-- trigger, object reconstruction, missing transverse energy\\
-- units of cross section\\
+The Large Hadron Collider (LHC) is the world's largest particle accelerator with a circumference of 27 km. Superconducting magnets are used to accelerate two beams of protons up to nearly the speed of light. The beams are then brought to collision at various points around the LHC. Located at one of these collision points is the ATLAS detector, one of the two multipurpose detectors at the LHC. The LHC has been colliding protons at a centre-of-mass (COM) energy of 13 TeV since 2015. During this time ATLAS has been continuously taking data.
 
-\clearpage
-text
+The amount of \pp collision data delivered by the LHC is quantified by the \textit{luminosity}. The total number of $pp$ collisions $N$ detected over all time $t$ is related to the cross section for $pp$ collisions $\sigma$, and can be expressed in terms of either the instantaneous luminosity $L$ or the integrated luminosity $\mathcal{L}$:
+
+\begin{equation}
+N = \sigma = \int{L} \text{d}t = \sigma \mathcal{L}
+\end{equation}
+
+\noindent $\mathcal{L}$ is the measure of total data collected that is frequently quoted in ATLAS. It has units of cm$^2$, but a more frequently used unit is the inverse barn. 1 b = 10$^{-28}$ m$^2$. The total amount of data delivered by the LHC since 2015 is currently 93 \ifb from 2015-2017. ATLAS has recorded a total of 86 \ifb, with 80 \ifb that is good for physics analyses.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{Figures/atlas.jpg}
+\caption{The ATLAS detector.}
+\label{fig:atlas}
+\end{figure}
+
+An overview of the ATLAS detector is shown in Figure \ref{fig:atlas}. It is composed of four major subsystems. The innermost system is the inner detector (ID) which measures the tracks of charged particles very near to the collision point. It consists of three layers known as the pixel detector, semiconductor tracker (SCT), and transition radiation tracker (TRT). The innermost pixel detector has the highest resolution granularity in the detector and consists of 80 million pixels. The SCT consists of 60 m$^2$ of silicon microstrips with densely packed readout channels, and the TRT consists of 300,000 straw tubes with wires inside to measure tracks from ionization. The ID is encased in a solenoid magnet that exerts a 2 Tesla magnetic field. The magnetic field causes the paths of charged particles to bend. The momentum of the particles can be determined from the curvature of the tracks.
+
+Moving outward from the centre of the detector, the next subsystems are the electromagnetic (EM) and hadronic (HAD) calorimeters. The EM system is entirely composed of liquid argon (LAr) calorimetery, while the HAD system includes the tile calorimeter in the barrel region and LAr calorimetery in the end caps. The calorimeters are dense and designed to stop particles completely so that their energy is deposited entirely inside the detector. The EM calorimeter is designed to stop particles that interact electromagnetically (electrons and photons) while the HAD calorimeter is designed to stop hadrons (e.g. protons and neutrons). The LAr calorimeter consists of alternating layers of copper absorber material and LAr ionization chambers, while the tile calorimeter alternates between layers of steel and plastic scintillators. 
+
+The outermost and largest system of the detector is the muon spectrometer (MS). Muons will interact minimally with the detector and so the MS is designed to measure their momenta from tracks. The MS consists of several systems. Monitored drift tubes (MDTs) are used in the barrel and end caps for measuring track curvature. Resistive plate chambers (RPCs), cathode strip chambers (CSCs), and thin gap chambers (TGCs) are used for precision coordinate measurements throughout the spectrometer. The MS also contains the ATLAS toroid magnet system.
+
+Events that occur in the detector are recorded by the ATLAS trigger system, consisting of tiers that act at the hardware and software levels. The trigger makes decisions on which events to record to disk or not based on energy deposits, etc.
+
 \clearpage
 
