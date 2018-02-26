@@ -4,18 +4,37 @@
 % --------------------------------------------------------------------------------------
 \section{Event Selection Optimization}
 
-For the full Run 2 analysis the event selection for the signal region will need to be reoptimized. This is typically done by quantifying the signal significance. 
+For the full Run 2 analysis the event selection for the signal region will need to be reoptimized. In practice this is done by defining multiple potential signal regions with each cut varied in intervals (e.g. \etmiss > 80, 85, 90, 95, 100, ... GeV). Then in each region the signal significance $Z$ is calculated. The formula used in the past iterations of the analysis is given by \cite{Cowan1}:
 
-- different MET working points\\
-% https://twiki.cern.ch/twiki/bin/view/AtlasProtected/EtmissRecommendationsRel21p2#Working_Points
+\begin{equation}
+Z = \sqrt{2 \left( (s+b) \ln \left( 1+\frac{s}{b} \right) -s \right)} 
+\label{eqn:Z1}
+\end{equation}
+
+\noindent $s$ and $b$ are the expected number of signal and background events in MC, and $s+b$ follows a Poisson distribution. If $s \ll b$ then the formula reduces to $Z = s/\sqrt{b}$. The main caveat with this formula however is that the uncertainty on $b$ is considered to be negligible. If one takes the uncertainty on $b$ to be $\sigma_b$, then the formula becomes:
+
+\begin{equation}
+Z = \sqrt{2 \left( (s+b) \ln \left( \frac{(s+b)(b+\sigma_b^2)}{b^2+(s+b)\sigma_b^2} \right) - \frac{b^2}{\sigma_b^2} \ln \left( 1 + \frac{\sigma_b^2 s}{b(b+\sigma_b^2)} \right) \right)} 
+\label{eqn:Z2}
+\end{equation}
+
+\noindent This formula reduces to $Z = s/\sqrt{b+\sigma_b^2}$ for $s \ll b$ and $\sigma_b^2 \ll b$. Using this formula would be an improvement compared to using Equation \ref{eqn:Z1}. The significance is estimated from MC, so the uncertainties $\sigma_b$ could be either (a) the experimental systematics as applied to the MC, or possibly (b) approximated from the much larger data-driven uncertainties on the background estimates from the 2015+2016 result. These uncertainties were calculated in a specific signal region, but their approximate magnitudes could be useful for estimating a more conservative significance. 
+
+A reoptimization of the signal region is also motivated by newly available \etmiss-related quantities that could improve the \monoZ analysis. For example, two \etmiss working points are now available. In the new ``tight'' \etmiss definition, jets in the forward region of the detector must have \pt > 30 GeV to reduce contributions from pileup. The ``loose'' definition (used previously in this analysis) includes all jets with \pt > 20 GeV except for forward jets with \pt < 60 GeV that fail an additional minimum jet vertex tagger (JVT) requirement, a multivariate criteria that identifies pileup jets from tracks. The tight definition is now recommended because the \etmiss resolution is improved. Both definitions will be studied to validate the improvement in switching to the tight definition.
+
+Another new variable is the \etmiss significance $\mathcal{S}$. It is defined using a log-likelihood ratio to estimate how likely it is that the reconstructed \etmiss is consistent with the true \etmiss according to:
+
+\begin{equation}
+\mathcal{S} = 2 \ln \left( \frac{\mathcal{L}(E_\text{T}^\text{miss} = \sum_i E_{T,i}^\text{miss})}{\mathcal{L}(E_{T,true}^\text{miss} = 0)} \right)
+\end{equation}
+
+
 
 - MET significance \\ 
 %https://cds.cern.ch/record/2294922/files/ATL-COM-PHYS-2017-1735.pdf
 
-- signal/background or significance optimization, ...\\
-% Chris's talk with 2 signif formulae: https://indico.cern.ch/event/678491/contributions/2856994/attachments/1584711/2505221/SignificanceCalculation.pdf
-% Signif using formula from Cowan paper: https://indico.cern.ch/event/678491/contributions/2895815/attachments/1600870/2538022/WhitePaperFinalization.pdf
-% Cowan paper with 2 formulae with likelihoods: https://www.pp.rhul.ac.uk/~cowan/stat/medsig/medsigNote.pdf
+- multiple SRs!! \\
+
 
 % --------------------------------------------------------------------------------------
 \section{Applying the \gjets Method to Data}
