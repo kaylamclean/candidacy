@@ -98,18 +98,24 @@ The mono-jet analysis recently set limits on the $t$-channel signature using the
 \mathcal{L}_\text{int} = g \sum_{i=1,2,3} \eta_{(i),L} \bar{Q}_{(i),L} \chi
 \end{equation}
 
-\noindent In this model, couplings to right-handed quarks are turned off, but the third generation of quarks is included. The mono-jet analysis chose to use this model without including the third generation. This decision was based on the availability of Bell et al.\xspace to answer technical questions about the implementation/generation in \madgraph. The best choice to use for \monoZ will need to be investigated.
+\noindent In this model, couplings to right-handed quarks are turned off, but the third generation of quarks is included. The mono-jet analysis chose to use this model without including the third generation. This decision was based on the availability of Bell et al.\xspace to answer technical questions about the implementation/generation in \madgraph. The best choice for the \monoZ search will need to be investigated.
 
-\noindent * {\color{red}TODO: less simplified models} \\
+The so-called Less Simplified (LS) models \cite{Ko:2016zxg} are another promising category. These models are similar to simplified models but have the full gauge symmetry of the Standard Model. For this model the interaction Lagrangian between quarks and dark matter is:
 
-A more complete
+\begin{equation}
+\mathcal{L}_\text{int} = - \left[ \bar{\chi} \tilde{Q}_L^{i\dagger}(\lambda_{Q_L})_i^j Q_{Lj} + \bar{\chi} \tilde{u}_R^{i\dagger} (\lambda_{uR})_i^j + \bar{\chi} \tilde{d}_R^{i\dagger} (\lambda_{dR})_i^j d_{Rj} + h.c. \right]
+\end{equation}
 
-And there are even more models \cite{Bauer:2017fsw} currently being discussed as new benchmarks.
+\noindent {\color{red}TODO: Discuss the parameters in LS models, advantages over simplified models, ...}
 
-The \monoZ analysis currently has eight Papucci model signal samples that were requested at the start of Run 2. Hypothesis tests were run on them with 36.1 \ifb of data, but none of the samples were excluded. The mono-jet analysis recently set $t$-channel exclusion limits using the Bell model, and their axial-vector and coloured scalar mediators exclusion regions were quite similar. Hence it was unexpected that none of the \monoZ signals were excluded. This led to some investigations, and it turns out that the \monoZ samples were generated with an incorrect mediator width. The plan now is to use \madgraph to generate $t$-channel samples with the correct and incorrect mediators to understand the effect on signal. If only the cross section is affected and not the \etmiss, then it may be possible to scale the incorrect reconstructed samples to the correct normalization and then rerun the limit setting. From the mono-jet analysis we expect to get similar reach in mass as for the axial-vector model. Then an estimate can be made on how far the limit will reach and a full set of $t$-channel samples can be requested. Mass point emulation will also need to be investigated at the same time to determine how fine/coarse the grid of reconstructed points should be.
+And there are even more models \cite{Bauer:2017fsw} being discussed as potential new $t$-channel benchmarks. Discussions will need to be had with the LHC DM WG in order to determine the best model(s) to investigate.
+
+The Papucci model may serve as a good starting point. The \monoZ analysis currently has eight Papucci model signal samples that were requested at the start of Run 2. Hypothesis tests were run on them with 36.1 \ifb of data, but none of the samples were excluded. The mono-jet analysis recently set $t$-channel exclusion limits using the Bell model, and their axial-vector and coloured scalar mediators exclusion regions were quite similar. Hence it was unexpected that none of the \monoZ signals were excluded. This led to some investigations, and it turns out that the \monoZ samples were generated with an incorrect mediator width. The plan now is to use \madgraph to generate $t$-channel samples with the correct and incorrect mediators to understand the effect on signal. If only the cross section is affected and not the \etmiss, then it may be possible to scale the incorrect reconstructed samples to the correct normalization and then rerun the limit setting. From the mono-jet analysis we expect to get similar reach in mass as for the axial-vector model. Then an estimate can be made on how far the limit will reach and a full set of $t$-channel samples can be requested. Mass point emulation will also need to be investigated at the same time to determine how fine/coarse the grid of reconstructed points should be. {\color{red}TODO: This paragraph may not be needed, or it can be condensed...}
 
 % --------------------------------------------------------------------------------------
 \section{Other Analysis Improvements}
+
+The \monoZ limits have been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The same should be done to put limits on the velocity-averaged dark matter annihilation cross section into $q\bar{q}$ and compare with ID experiments. The procedure for converting the 2D mass limits into a limit on $\langle \sigma v_\text{rel} \rangle$ is covered in \cite{Boveia:2016mrp}. Figure \ref{fig:id} gives a schematic example of what the comparison may look like.
 
 \begin{figure}[h]
 \centering
@@ -118,10 +124,9 @@ The \monoZ analysis currently has eight Papucci model signal samples that were r
 \label{fig:id}
 \end{figure}
 
-The \monoZ limits have been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The same should be done to put limits on the velocity-averaged dark matter annihilation cross section into $q\bar{q}$ and compare with ID experiments. The procedure for converting the 2D mass limits into a limit on $\langle \sigma v_\text{rel} \rangle$ is covered in \cite{Boveia:2016mrp}. Figure \ref{fig:id} gives a schematic example of what the comparison may look like.
+Another improvement on the horizon for the analysis is the inclusion of weights in the signal MC generation to calculate QCD, PDF, and PS systematic uncertainties. This will allow the systematic variations to be calculated for each sample using a weight, rather than having to tediously generate our own truth samples for each variation. This will be especially useful for NLO samples, since MC generation will take much longer than for models at LO. In addition, the uncertainty for each sample will be used rather than having to interpolate between masses, etc. The technical implementation of including these weights in our \madgraph and \pythia simulation has been successful; the weights will be included in the upcoming NLO simplified model sample requests, and hopefully all future requests for other models. The proper procedure for using these weights will need to be studied and the analysis code will need to be adapted accordingly.
 
-Another improvement on the horizon for the analysis is the inclusion of weights in the signal MC generation to allow the calculation of QCD, PDF, and PS systematic uncertainties.
-
-Finally, the analysis software...
-
+Finally, the \monoZ analysis software will continue to be improved throughout Run 2. {\color{red}TODO!}
+ 
+{\color{red}TODO: Anything else I haven't thought of?}
 
