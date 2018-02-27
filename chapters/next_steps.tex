@@ -35,46 +35,93 @@ Finally, an added complication in the future event selection optimization of the
 
 
 % --------------------------------------------------------------------------------------
-\section{Applying the \gjets Method to Data}
+\section{Development of the \gjets Technique}
 
-- continue efforts with the \gjets method\\
-- try MET cut before reweighting?\\
-- obtain weights from MC?\\
-- define a validation region\\
-- apply weights to data, compare with MC to test closure\\
-- implementation in MonoZUVic\\
+The \gjets method for estimating the \Zjets background is under development. For the 2015+2016 result, a heavily modified ABCD method was used for the \Zjets data-driven estimate. The systematic errors on the estimate were large, on the order of 50-100\%. It would be ideal to have a more reliable estimate for this background from the \gjets method for the full Run 2 result.
+
+As discussed in Section \ref{sec:gjets}, for the 2015+2016 result acceptable agreement was seen between MC \gjets and \Zjets events in the signal region, with the estimates nearly agreeing within statistical errors. The method used a 2x1D reweighting scheme with the boson \pt and the \etmissht. After the reoptimization of the event selection, this scheme may change. For example, with the introduction of the \etmiss significance described in the previous section, it may be ideal to redo the \gjets estimate with \pt and $\mathcal{S}$, that is if $\mathcal{S}$ is chosen to be included in the event selection. Depending on the selections chosen, it could be worth reinvestigating a few of the more promising pairs of variables to perform the reweighting with. In addition, the improved statistics of the Run 2 dataset may provide opportunity for more reliable 2D weights, but this will need to be assessed. It may also be worthwhile to investigate the effects of the reweighting before/after certain cuts. For example, the largest disagreement between \gjets and \Zjets events in the cutflow was seen at the \etmiss (and \etmissht) cut. It could be that reweighting the events after the \etmiss requirement may help to improve the agreement.
+
+Once acceptable agreement is seen in \gjets and \Zjets events, the next step would be to apply the method to data. A few methods for doing this have been discussed. For example, should the weights be obtained from data or MC? This may depend on which has more reliable statistics. The validation of the weights must also be tested, for example by applying weights obtained in MC to data and then looking at the agreement with the reweighted MC. Differences seen in the agreement must then be quantified as systematic errors in the technique. 
+
+There is also the technical side of implementing the \gjets technique in the MonoZUVic software. This was done previously for the 2015+2016 result, but since then the code has undergone a significant redesign, and the \gjets estimate will need to be reimplemented.
 
 % --------------------------------------------------------------------------------------
 \section{Signal Models}
-- s-channel simplified models at NLO\\
-% DM summary paper? https://cds.cern.ch/record/2273840/files/ATL-COM-PHYS-2017-1031.pdf
-- mention rescaling to NLO and with leptonic couplings\\
 
-- t-channel signals: Bell model (mediator-Z diagram), less simplified model\\
+More dark matter models with be studied in the \monoZ analysis with the full Run 2 dataset. As recommended by the LHC DM Working Group, $s$-channel simplified models with spin-0 mediators will continue to be the benchmark model used in the analysis; however signals will be simulated at NLO in QCD rather than LO, as higher-order QCD corrections have been shown to have a significant impact on the production rate and kinematic distributions of these models \cite{Backovic:2015soa}. In addition, these models allow for mediator couplings to leptons. In total there are four NLO benchmark scenarios recommended \cite{Albert:2017onk} with the following couplings:
 
-It should also be noted that, in the time since these initial benchmark models were set, next-to-leading order (NLO) models are now being considered instead of the leading order (LO) tree diagrams discussed here. Finally, in addition to these $s$-channel diagrams there also exist $t$-channel processes that are of great interest to the \monoZ search. These will be discussed more in Chapter \ref{chapter:fullRun2}.
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccc}
+\hline \hline
+Model & Mediator     & $g_q$ & $g_\ell$ & $g_\chi$ \\ \hline \hline
+A1    & axial-vector & 0.25  & 0.0      & 1.0      \\ \hline
+A2    & axial-vector & 0.1   & 0.1      & 1.0      \\ \hline
+V1    & vector       & 0.25  & 0.0      & 1.0      \\ \hline
+V2    & vector       & 0.1   & 0.01     & 1.0    \\ \hline \hline
+\end{tabular}
+\caption{Benchmarks for NLO $s$-channel simplified models in Run 2.}
+\label{tbl:nloSimp}
+\end{table}
 
-% --------------------------------------------------------------------------------------
-\section{Prospective Limits with 140 \ifb}
+\noindent Chris Anelli has recently done work to show that it is possible to rescale from A1$\rightarrow$A2 and V1$\rightarrow$V2 using the ratio of cross sections. We are currently working on sample requests for the A1 and V1 models, and scaling will be done for the A2 and V2 scenarios. Mass point emulation will also be carried out again to reduce the number of reconstructed samples needed. The full Run 2 dataset is expected to be $\sim$140 \ifb. To estimate how the limits will improve for such a dataset, the NLO limits obtained with 36.1 \ifb have been scaled to an integrated luminosity of 140 \ifb. Figure \ref{fig:140limits} shows a projection from Chris for the NLO vector limits. This projection assumes the same signal region and background estimates as used for the 2015+2016 result. These will of course change with the full dataset, but it gives an estimate for the masses at which we should request samples. Compared to 36.1 \ifb, the expected reach in $m_{med}$ improves from 550 GeV to nearly 900 GeV for light $m_\chi$, and the maximum reach in $m_\chi$ improves from 250 GeV up to 350 GeV.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{Figures/140ifb.png}
-\caption{Prospective vector exclusion limit with 140 \ifb. Produced by Chris Anelli.}
-\label{fig:id}
+\caption{Prospective NLO $s$-channel vector exclusion limit with 140 \ifb. Produced by Chris Anelli.}
+\label{fig:140limits}
 \end{figure}
+
+In addition to the simplified models, the 2HDM+PS model has become a new standard in the analysis. A similar projection to 140 \ifb will be done using the limits on $m_H$ vs $m_a$ and $\tan \beta$ vs $m_a$ with 36.1 \ifb shown in Section \ref{sec:limits}, and a request for more reconstructed samples will follow suit. Mass point emulation for the 2HDM+PS model is more complicated than for the simplified models; both the signal acceptance and the \etmiss shape depend non-trivially on $m_a$ and $m_H$, and the best method for emulating samples is still being investigated.
+
+The other type of signature to be investigated with the full Run 2 dataset is the $t$-channel signature with a coloured scalar mediator. There are various models that encompass this type of signature (Figure \ref{fig:tchan_bell} shows the relevant $t$-channel diagrams for \monoZ). A few potential models to be considered are discussed here. These models are of interest for the \monoZ search because the $Z$ is allowed to couple directly to the mediator, a channel unique to \monoZ.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.75\textwidth]{Figures/tchan_bell.png}
+\caption{$t$-channel diagrams with the \monoZ signature.}
+\label{fig:tchan_bell}
+\end{figure}
+
+The Papucci model \cite{Papucci:2014iwa} was the first $t$-channel model recommended by the LHC DM WG in \cite{Abercrombie:2015wmb}. The interaction Lagrangian is given by:
+
+\begin{equation}
+\mathcal{L}_\text{int} = g \sum_{i=1,2} \left( \eta_{(i),L} \bar{Q}_{(i),L} + \eta_{(i),u,R} \bar{u}_{(i),R} + \eta_{(i),d,R} \bar{d}_{(i),R} \right) \chi
+\end{equation}
+
+\noindent Here $Q_{(i),L}$, $u_{(i),R}$, and $d_{(i),R}$ are the SM quarks, $\eta_{(i),L}$, $\eta_{(i),u,R}$, and $\eta_{(i),d,R}$ are the mediator particles, and $g$ is the coupling between the SM particles and dark matter. $L$ and $R$ indicate left- and right-handedness, and the index $i$ is the quark generation. In the Papucci model only the first two generations are considered. 
+
+The mono-jet analysis recently set limits on the $t$-channel signature using the Bell model \cite{Bell:2012rg}, a subset of the Papucci model with the interaction Lagrangian:
+
+\begin{equation}
+\mathcal{L}_\text{int} = g \sum_{i=1,2,3} \eta_{(i),L} \bar{Q}_{(i),L} \chi
+\end{equation}
+
+\noindent In this model, couplings to right-handed quarks are turned off, but the third generation of quarks is included. The mono-jet analysis chose to use this model without including the third generation. This decision was based on the availability of Bell et al.\xspace to answer technical questions about the implementation/generation in \madgraph. The best choice to use for \monoZ will need to be investigated.
+
+\noindent * {\color{red}TODO: less simplified models} \\
+
+A more complete
+
+And there are even more models \cite{Bauer:2017fsw} currently being discussed as new benchmarks.
+
+The \monoZ analysis currently has eight Papucci model signal samples that were requested at the start of Run 2. Hypothesis tests were run on them with 36.1 \ifb of data, but none of the samples were excluded. The mono-jet analysis recently set $t$-channel exclusion limits using the Bell model, and their axial-vector and coloured scalar mediators exclusion regions were quite similar. Hence it was unexpected that none of the \monoZ signals were excluded. This led to some investigations, and it turns out that the \monoZ samples were generated with an incorrect mediator width. The plan now is to use \madgraph to generate $t$-channel samples with the correct and incorrect mediators to understand the effect on signal. If only the cross section is affected and not the \etmiss, then it may be possible to scale the incorrect reconstructed samples to the correct normalization and then rerun the limit setting. From the mono-jet analysis we expect to get similar reach in mass as for the axial-vector model. Then an estimate can be made on how far the limit will reach and a full set of $t$-channel samples can be requested. Mass point emulation will also need to be investigated at the same time to determine how fine/coarse the grid of reconstructed points should be.
 
 % --------------------------------------------------------------------------------------
 \section{Other Analysis Improvements}
 
-- comparison with ID measurements\\
-
-\begin{figure}[htb]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{Figures/id.png}
-\caption{A schematic of what a comparison with ID detection measurements could look like.}
+\caption{A schematic of a collider limit on $\langle \sigma v_\text{rel} \rangle$ vs $m_\chi$ overlaid with a ID measurement \cite{Boveia:2016mrp}.}
 \label{fig:id}
 \end{figure}
 
-- theoretical uncertainties on signal acceptance - weights!! \\
-- maintenance of analysis code\\
+The \monoZ limits have been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The same should be done to put limits on the velocity-averaged dark matter annihilation cross section into $q\bar{q}$ and compare with ID experiments. The procedure for converting the 2D mass limits into a limit on $\langle \sigma v_\text{rel} \rangle$ is covered in \cite{Boveia:2016mrp}. Figure \ref{fig:id} gives a schematic example of what the comparison may look like.
+
+Another improvement on the horizon for the analysis is the inclusion of weights in the signal MC generation to allow the calculation of QCD, PDF, and PS systematic uncertainties.
+
+Finally, the analysis software...
+
+
