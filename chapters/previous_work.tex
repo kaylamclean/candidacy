@@ -116,7 +116,7 @@ Due to time constraints in the analysis for the 2015+2016 result, the developmen
 \section{Dark Matter Limit Setting}
 \label{sec:limits}
 
-In the case that no excess is observed in data, upper limits are set on the signal strength for each of the dark matter models. These are then translated into limits on the masses of the dark matter particles, \mchi and \mmed. Hypothesis tests are performed using HistFitter. The signal region \etmiss distributions are inputted to HistFitter for signal, backgrounds, and all systematic uncertainties (also known as nuisance parameters or NPs). HistFitter calculates upper limits using the CL$_{s}$ method~\cite{Cowan:2010js}, a standard in the ATLAS experiment. {\color{red}TODO: Now I summarize the hypothesis testing. Maybe better served for an appendix?}
+In the case that no excess is observed in data, upper limits are set on the signal strength for each of the dark matter models. These are then translated into limits on the masses of the dark matter particles, \mchi and \mmed. Hypothesis tests are performed using \histfitter. The signal region \etmiss distributions are inputted to \histfitter for signal, backgrounds, and all systematic uncertainties (also known as nuisance parameters or NPs). \histfitter calculates upper limits using the CL$_{s}$ method~\cite{Cowan:2010js}, a standard in the ATLAS experiment. {\color{red}TODO: Now I summarize the hypothesis testing. Maybe better served for an appendix?}
 
 The statistical analysis of the data uses a binned likelihood function constructed as the product of Poisson probability terms,
 \begin{equation}
@@ -159,7 +159,7 @@ p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
 p_b = P(\tilde q_\mu \leq \tilde{q}_{\mu,\text{obs}} | b).
 \end{equation}
 
-Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% confidence level (CL). These upper limits on $\mu$ are then extracted from HistFitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
+Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% confidence level (CL). These upper limits on $\mu$ are then extracted from \histfitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
 
 Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 result on \mchi vs \mmed for axial-vector and vector mediators from the LO simplified models. The mass region inside the contour is excluded at the 95\% CL. The relic density line indicates where the particles and interactions of the model are by themselves sufficient for explaining the observed DM abundance in the universe.
 
