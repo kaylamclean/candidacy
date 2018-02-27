@@ -37,7 +37,7 @@ After defining a signal region, estimating backgrounds in that signal region, an
 \section{Truth Studies} 
 \label{sec:truth}
 
-Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator, typically \textsc{MadGraph}. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
+Truth studies are often useful when we want to ignore the effects of the ATLAS detector. \textit{Reconstructed} MC samples include simulation of the detector, whereas \textit{truth-level} MC samples come directly from the MC generator, typically \textsc{MadGraph} \cite{Alwall:2011uj}. Studying these samples allow us to study theoretical effects on the signal. In addition, such samples can be produced quickly and locally, whereas reconstructed samples must undergo heavy duty ATLAS reconstruction which can be computationally intensive. 
 
 A framework has been adapted, called MonoZTruthUVic, for applying truth-equivalent analysis cuts to truth samples. This allows for the analysis to be reproduced at the truth-level. This is useful for several reasons and allows us to estimate how many signal events are theoretically predicted to be in the signal region.
 
@@ -59,7 +59,7 @@ In short, by simulating dark matter MC with different values for $\mu_f$ and $\m
 \label{fig:qcd}
 \end{figure}
 
-The other source of theoretical uncertainty on the signal acceptance comes from parton showering effects. In the MC samples used by ATLAS, after the hard scatter is simulated it is run through a showering simulator called \pythia. \pythia adds in several physical effects such as the underlying event (UE), initial and final state radiation (ISR and FSR) of extra jets, and multiple parton interactions (MPI). These are complicated processes governed by QCD and the number of parameters in \pythia that can be set are extensive. To simplify this, ATLAS has a standardized \pythia \textit{tune}, i.e. a set of parameters that serve as the default to be used in MC showering. The signal acceptance depends on the choice of this tune. The uncertainty is evaluated using a prescription whereby ten variations are used to account for each general effect. As for the QCD scale uncertainties, variational MC samples are produced according to each variation, and the difference in the signal acceptance is evaluated compared to the nominal showering. These systematics are typically on the order of 5\%.
+The other source of theoretical uncertainty on the signal acceptance comes from parton showering effects. In the MC samples used by ATLAS, after the hard scatter is simulated it is run through a showering simulator called \pythia \cite{Sjostrand:2014zea}. \pythia adds in several physical effects such as the underlying event (UE), initial and final state radiation (ISR and FSR) of extra jets, and multiple parton interactions (MPI). These are complicated processes governed by QCD and the number of parameters in \pythia that can be set are extensive. To simplify this, ATLAS has a standardized \pythia \textit{tune}, i.e. a set of parameters that serve as the default to be used in MC showering. The signal acceptance depends on the choice of this tune. The uncertainty is evaluated using a prescription whereby ten variations are used to account for each general effect. As for the QCD scale uncertainties, variational MC samples are produced according to each variation, and the difference in the signal acceptance is evaluated compared to the nominal showering. These systematics are typically on the order of 5\%.
 
 
 % --------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ The other source of theoretical uncertainty on the signal acceptance comes from 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{Figures/abcd2.png}
-\caption{Scheme of the ABCD method.}
+\caption{Scheme of the ABCD method used with the 2015 dataset.}
 \label{fig:abcd}
 \end{figure}
 
@@ -116,20 +116,20 @@ Due to time constraints in the analysis for the 2015+2016 result, the developmen
 \section{Dark Matter Limit Setting}
 \label{sec:limits}
 
-In the case that no excess is observed in data, upper limits are set on the signal strength for each of the dark matter models. These are then translated into limits on the masses of the dark matter particles, \mchi and \mmed. Hypothesis tests are performed using \histfitter. The signal region \etmiss distributions are inputted to \histfitter for signal, backgrounds, and all systematic uncertainties (also known as nuisance parameters or NPs). \histfitter calculates upper limits using the CL$_{s}$ method~\cite{Cowan:2010js}, a standard in the ATLAS experiment. {\color{red}TODO: Now I summarize the hypothesis testing. Maybe better served for an appendix?}
+In the case that no excess is observed in data, upper limits are set on the signal strength for each of the dark matter models. These are then translated into limits on the masses of the dark matter particles, \mchi and \mmed. Hypothesis tests are performed using the \histfitter \cite{Baak:2014wma} framework. The signal region \etmiss distributions are inputted to \histfitter for data, expected signal and backgrounds, and all systematic uncertainty variations. \histfitter is then used to calculate upper limits on the amount of signal using the CL$_{s}$ method \cite{Cowan:2010js}, a standard in the ATLAS experiment. 
 
-The statistical analysis of the data uses a binned likelihood function constructed as the product of Poisson probability terms,
+The statistical analysis of the data uses a binned likelihood function constructed as:
 \begin{equation}
-\mathcal{L} = 
-\text{Pois}(n|\mu s+b)\left[\prod_{b\in \text{bins}}^{n}
-\frac{\mu \nu_{b}^{\text{sig}} + \nu_{b}^{\text{bkg}}}{\mu s+b} \right],
+L(\mu,\boldsymbol{\theta}) = \prod_{i=1}^N \frac{(\mu s_i + b_i)^{n_i}}{n_i !} e^{-(\mu s_i + b_i)} \times \prod_{j=1}^M G(\theta_j^0, \theta_j)
+\label{eqn:likelihood}
 \end{equation}
-where $\mu$, the signal strength parameter, multiplies the expected signal yield $\nu_{b}^{\text{sig}}$ in each histogram bin $b$, and $\nu_{b}^{\text{bkg}}$ represents the background content for bin $b$. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of NPs $\vec{\theta}$, which are each parametrized by a Gaussian. 
 
-The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximized log-likelihood, $\mathcal{L}(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. The test statistic $\tilde q_\mu$ is then constructed based on the profile likelihood ratio:
+\noindent The first term is the product of Poisson probabilities to observe $n_i$ events for each signal region bin $i$ that has $\mu s_i + b_i$ expected events. $s_i$ and $b_i$ are the predicted signal and background yields in each bin, and $\mu$ is the signal strength parameter. $\mu=0$ is the background-only hypothesis, and $\mu=1$ is the signal+background hypothesis. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of nuisance parameters (NPs) $\vec{\theta}$ (= $\boldsymbol{\theta}$), which are each parametrized by a Gaussian. The second term in Equation \ref{eqn:likelihood} is a product of these terms over all systematics, where $\theta_j^0$ is the measured central value around which $\theta_j$ varies. In \histfitter the $G$'s are parametrized so that each $\theta_j^0$ is fixed to 0 with a standard deviation of 1.
+
+The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximized log-likelihood, $L(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. The test statistic $\tilde q_\mu$ is then constructed based on the profile likelihood ratio:
 
 \begin{equation}
-\lambda(\mu) = \frac{\mathcal{L}(\mu, \hat{\hat{\boldsymbol{\theta}}})}{\mathcal{L}(\hat{\mu}, \hat{\boldsymbol{\theta}})}
+\lambda(\mu) = \frac{L(\mu, \hat{\hat{\boldsymbol{\theta}}})}{L(\hat{\mu}, \hat{\boldsymbol{\theta}})}
 \label{eqn:proflike}
 \end{equation}
 
