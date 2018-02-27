@@ -31,7 +31,6 @@
 *.out
 *.synctex.gz
 *.synctex
-*.pdf
 *.fls
 *.fdb_latexmk
 *.tdo
