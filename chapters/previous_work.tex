@@ -124,16 +124,16 @@ L(\mu,\boldsymbol{\theta}) = \prod_{i=1}^N \frac{(\mu s_i + b_i)^{n_i}}{n_i !} e
 \label{eqn:likelihood}
 \end{equation}
 
-\noindent The first term is the product of Poisson probabilities to observe $n_i$ events for each signal region bin $i$ that has $\mu s_i + b_i$ expected events. $s_i$ and $b_i$ are the predicted signal and background yields in each bin, and $\mu$ is the signal strength parameter. $\mu=0$ is the background-only hypothesis, and $\mu=1$ is the signal+background hypothesis. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of nuisance parameters (NPs) $\vec{\theta}$ (= $\boldsymbol{\theta}$), which are each parametrized by a Gaussian. The second term in Equation \ref{eqn:likelihood} is a product of these terms over all systematics, where $\theta_j^0$ is the measured central value around which $\theta_j$ varies. In \histfitter the $G$'s are parametrized so that each $\theta_j^0$ is fixed to 0 with a standard deviation of 1.
+\noindent The first term is the product of Poisson probabilities to observe $n_i$ events for each signal region bin $i$ that has $\mu s_i + b_i$ expected events. $s_i$ and $b_i$ are the predicted signal and background yields in each bin, and $\mu$ is the signal strength parameter (also called the \textit{parameter of interest}). $\mu=0$ is the background-only hypothesis, and $\mu=1$ is the signal+background hypothesis. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of nuisance parameters (NPs) $\vec{\theta}$ (= $\boldsymbol{\theta}$), which are each parametrized by a Gaussian. The second term in Equation \ref{eqn:likelihood} is a product of these terms over all systematics, where $\theta_j^0$ is the measured central value around which $\theta_j$ varies. In \histfitter the $G$'s are parametrized so that each $\theta_j^0$ is fixed to 0 with standard deviation = 1.
 
-The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximized log-likelihood, $L(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. The test statistic $\tilde q_\mu$ is then constructed based on the profile likelihood ratio:
+The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximum likelihood, $L(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. A \textit{test statistic}, $\tilde q_\mu$, is then constructed based on the profile likelihood ratio $\lambda(\mu)$:
 
 \begin{equation}
 \lambda(\mu) = \frac{L(\mu, \hat{\hat{\boldsymbol{\theta}}})}{L(\hat{\mu}, \hat{\boldsymbol{\theta}})}
 \label{eqn:proflike}
 \end{equation}
 
-\noindent $\hat{\hat{\boldsymbol{\theta}}}$ are the nuisance parameter values that maximize the likelihood for a given $\mu$. The level of compatibility is quantified using $\tilde q_\mu$, since larger values are interpreted as greater incompatibility between data and the assumed signal+background ($\mu=1$) hypothesis. The corresponding p-value, $p_\mu$, is defined as:
+\noindent $\hat{\hat{\boldsymbol{\theta}}}$ are the NP values that maximize the likelihood for a fixed $\mu$. Because the denominator is the maximum likelihood, it must be true that $0 \leq \lambda(\mu) \leq 1$. Hence smaller values of $\lambda(\mu)$ indicate less agreement between the measured $\hat{\mu}$ and the hypothesized $\mu$. For the test statistic $\tilde q_\mu$, larger values are interpreted as greater incompatibility between measurement and the $\mu$ hypothesis. The corresponding p-value, $p_\mu$, is then defined as:
 
 \begin{equation}
 p_\mu = \int_{\tilde{q}_{\mu,\text{obs}}}^\infty f(\tilde{q}_\mu | \mu) \text{d}\tilde{q}_\mu
@@ -141,13 +141,13 @@ p_\mu = \int_{\tilde{q}_{\mu,\text{obs}}}^\infty f(\tilde{q}_\mu | \mu) \text{d}
 \end{equation}
 
 \noindent Here $f(\tilde{q}_\mu | \mu)$ is the probability density function of $\tilde{q}_\mu$ assuming the $\mu$ hypothesis, and $\tilde{q}_{\mu,\text{obs}}$ is the value of $\tilde{q}_\mu$ computed for the observed data.
-Asymptotic formulae~\cite{Cowan:2010js} are used to calculate the closed form for $f(\tilde{q}_\mu | \mu)$. $p_\mu$ can also be written as:
+Asymptotic formulae \cite{Cowan:2010js} are used to calculate the closed form of $f(\tilde{q}_\mu | \mu)$. $p_\mu$ can also be written as:
 
 \begin{equation}
 p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
 \end{equation}
 
-\noindent Performing exclusion tests with $p_{s+b}$ is known as the CL$_{s+b}$ method. This analysis uses the CL$_s$ method, where the p-value, or the ``CL$_s$ value,'' is defined as:
+\noindent Hence it is the probability to observe a test statistic greater than or equal to the observed value, given that the $s+b$ ($\mu=1$) hypothesis is true. Performing exclusion tests with $p_{s+b}$ is known as the CL$_{s+b}$ method. This analysis uses the CL$_s$ method, where the p-value, or the ``CL$_s$ value,'' is defined as:
 
 \begin{equation}
 \text{CL}_s \equiv \frac{p_{s+b}}{1-p_b},
@@ -175,7 +175,7 @@ Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 result on 
         \includegraphics[width=\textwidth]{Figures/limits_dmV.pdf}
         \label{fig:limits_dmV}
     \end{subfigure}
-    \caption{Axial-vector (a) and vector (b) exclusion limits on \mchi vs \mmed with 36.1 \ifb.}
+    \caption{Axial-vector (left) and vector (right) exclusion limits on \mchi vs \mmed with 36.1 \ifb.}
 \label{fig:limits}
 \end{figure}
 
@@ -193,7 +193,7 @@ The 2D mass limits have also been recast into limits on the DM-proton scattering
         \includegraphics[width=\textwidth]{Figures/xsec_dmV.pdf}
         \label{fig:xsec_dmV}
     \end{subfigure}
-    \caption{Axial-vector (a) and vector (b) exclusion limits on the DM-nucleon scattering cross section vs \mmed with 36.1 \ifb.}
+    \caption{Axial-vector (left) and vector (right) exclusion limits on the DM-nucleon scattering cross section vs \mmed with 36.1 \ifb.}
 \label{fig:xsec}
 \end{figure}
 
@@ -211,7 +211,7 @@ Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 data
         \includegraphics[width=\textwidth]{Figures/limits_2hdma_tan.pdf}
         \label{fig:limits_2hdma_tan}
     \end{subfigure}
-    \caption{$m_H$ vs $m_a$ (a) and $\tan(\beta)$ vs $m_a$ (b) exclusion limits with 36.1 \ifb.}
+    \caption{$m_H$ vs $m_a$ (left) and $\tan(\beta)$ vs $m_a$ (right) exclusion limits with 36.1 \ifb.}
 \label{fig:2hdma}
 \end{figure}
 

@@ -4,33 +4,34 @@
 % --------------------------------------------------------------------------------------
 \section{Dark Matter Theory}
 
-% -------------------------------------------
-\subsection{Effective Field Theories}
-
-Effective field theories (EFTs) were the primary models studied in \etmissX dark matter searches in Run 1, when the centre-of-mass energy was 8 TeV. In short, these theories assume that a dark matter pair is produced by means of a contact interaction with a quark and antiquark, as illustrated in Figure \ref{fig:eft}. These types of models offer a straightforward means to compare collider results to DD or ID experiments. However, an important caveat of EFTs is that they are only valid when the mass of the mediating particle between the \chichi and \qq is much heavier than the momentum transfer of the process. Now that the centre-of-mass energy has increased to 13 TeV in Run 2, these EFTs are no longer valid. Thus, a new baseline model is used in Run 2 with the mediator particle explicitly included.
+Effective field theories (EFTs) \cite{Boveia:2016mrp} \cite{Beltran:2010ww} were the primary models studied in \etmissX dark matter searches in Run 1, when the centre-of-mass energy was 8 TeV. In short, these theories assume that a dark matter pair is produced by means of a contact interaction with a quark and antiquark, as illustrated in Figure \ref{fig:eft}. These types of models offer a straightforward means to compare collider results to DD or ID experiments. However, an important caveat of EFTs is that they are only valid when the mass of the mediating particle between the \chichi and \qq is much heavier than the momentum transfer of the process. Now that the centre-of-mass energy has increased to 13 TeV in Run 2, these EFTs are no longer valid. Thus, a new baseline model is used in Run 2 with the mediator particle explicitly included.
 
 \begin{figure}[htb]
-\centering
-\includegraphics[width=0.25\textwidth]{Figures/eft.png}
-% Alison's thesis: https://dspace.library.uvic.ca/handle/1828/8494
-\caption{An example EFT with a $Z+\chi\bar{\chi}$ final state with a \Z emitted as ISR. {\color{red}TODO: Citation!}}
-\label{fig:eft}
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{Figures/eft1.png}
+        \label{fig:eft1}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=\textwidth]{Figures/eft2.png}
+        \label{fig:eft2}
+    \end{subfigure}
+    \caption{Representative EFT diagrams for the \monoZ signature \cite{Beltran:2010ww}.}
+\label{fig:efts}
 \end{figure}
 
-% -------------------------------------------
-\subsection{Simplified Models}
-
-Leading order simplified models are the benchmark models used for \etmissX searches in Run 2 as recommended by the LHC DM Working Group \cite{Boveia:2016mrp}. An example $s$-channel diagram for the \Zetmiss signal is shown in Figure \ref{fig:simp}. These models are considered `simplified' because they introduce the minimum number of parameters needed to include a mediator between SM and dark matter particles (compared to more complicated models such as supersymmetry). 
+Leading order simplified models are the first set of benchmark models used for \etmissX searches in Run 2, as recommended by the LHC DM Working Group \cite{Boveia:2016mrp}. An example $s$-channel diagram for the \Zetmiss signal is shown in Figure \ref{fig:simp}. These models are considered `simplified' because they introduce the minimum number of parameters needed to include a mediator between SM and dark matter particles (compared to more complicated models such as supersymmetry). 
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.3\textwidth]{Figures/simp.png}
-% EPS paper: https://arxiv.org/abs/1708.09624
-\caption{$s$-channel diagram for WIMP pair production with a \Z emitted as ISR. {\color{red}TODO: Citation!}}
+\caption{Simplified model $s$-channel diagram for the \monoZ signature. \cite{Aaboud:2017bja}}
 \label{fig:simp}
 \end{figure}
 
-Simplified models introduce five BSM parameters: the mass of the WIMP, \mchi, the mass of the mediating particle, \mmed, the couplings of the mediator to the SM (to dark matter), \gq (\gchi), and the width of the mediator \Wmed. The mediator particle can be spin-0 (scalar or pseudo-scalar) or spin-1 (vector or axial-vector). 
+Simplified models introduce five new parameters: the mass of the WIMP, \mchi, the mass of the mediating particle, \mmed, the couplings of the mediator to the SM (to dark matter), \gq (\gchi), and the width of the mediator \Wmed. The mediator particle can be spin-0 (scalar or pseudo-scalar) or spin-1 (vector or axial-vector). 
 
 %The interaction Lagrangians for models with vector and axial-vector mediator couplings are given in Equations \ref{eqn:Lvector}, and \ref{eqn:Laxial}:
 
@@ -44,8 +45,7 @@ Simplified models introduce five BSM parameters: the mass of the WIMP, \mchi, th
 %\label{eqn:Laxial}
 %\end{equation}
 
-Following the recommendations in Ref. \cite{Boveia:2016mrp}, for spin-0 models the couplings are set to \gq = \gchi = 1.0. The Yukawa couplings $y_i^f$ are also included that are proportional to the quark masses. For spin-1 models the couplings are fixed to $g_q = 0.25$ and $g_\chi = 1.0$. In addition, assuming that the mediator has no additional decay modes, \Wmed is set to the so-called minimal width, which is fixed by \gq, \gchi, \mchi, and \mmed. % https://arxiv.org/pdf/1507.00966.pdf
-The couplings were chosen to correspond with a rough estimate of the lower sensitivity of the mono-jet analysis in Run 2, and so that \Wmed/\mmed$ < \sim 0.05$.
+Following the recommendations in Ref. \cite{Boveia:2016mrp}, for spin-0 models the couplings are set to \gq = \gchi = 1.0. The Yukawa couplings are also included between the quarks and the mediator. For spin-1 models the couplings are fixed to $g_q = 0.25$ and $g_\chi = 1.0$. In addition, assuming that the mediator has no additional decay modes, \Wmed is set to the so-called minimal width \cite{Abercrombie:2015wmb}, which is fixed by \gq, \gchi, \mchi, and \mmed. The couplings were chosen to correspond with a rough estimate of the lower sensitivity of the Run 2 mono-jet analysis, and so that \Wmed/\mmed$ < \sim 0.05$.
 
 %Similarly, the interaction Lagrangians for models with scalar and pseudo-scalar mediator couplings are given by Equations \ref{eqn:Lscalar} and \ref{eqn:Lpseudo}:
 
@@ -59,25 +59,22 @@ The couplings were chosen to correspond with a rough estimate of the lower sensi
 %\label{eqn:Lpseudo}
 %\end{equation}
 
-%\noindent For these models, the couplings are set to $g_q = g_\chi = 1.0$, and additional Yukawa couplings $y_i^f$ are introduced that are proportional to the quark masses. 
 % Assuming minimal flavour violation, spin-0 resonances will behave similarly to the Higgs boson (hence the Yukawa couplings)
 
 Run 2 analyses have adopted the $s$-channel exchange of an axial-vector mediator as the primary benchmark scenario. This choice is motivated by the findings in Ref. \cite{Boveia:2016mrp} that show that collider searches can be more sensitive than DD experiments at low values of \mchi for this type of mediator. 
 
-Although they have advantages compared to EFTs, simplified models are not a complete theory, and violate unitarity for some regions of parameter space. In Run 2 they have been and will continue to be exceedingly useful in providing a guideline for the ATLAS and CMS collaborations to follow in tandem, but there is now a big push towards studying more theoretically complete models. This includes the 2 Higgs doublet model discussed in the next section, as well as $t$-channel signatures with a coloured scalar mediator, discussed in Chapter \ref{chapter:fullRun2}.
+Although they have advantages compared to EFTs, simplified models are not a complete theory and violate unitarity for some regions of parameter space. At the beginning of Run 2 they were exceedingly useful in providing a guideline for the ATLAS and CMS collaborations to follow in tandem, but there is now a big push towards studying more theoretically complete models. This includes two Higgs doublet models, discussed next, as well as $t$-channel signatures with a coloured scalar mediator and so-called Less Simplified models, discussed in Chapter \ref{chapter:fullRun2}.
 
-% -------------------------------------------
-\subsection{2HDM+PS Model}
 % https://arxiv.org/pdf/1701.07427.pdf
 % DM summary paper: https://cds.cern.ch/record/2273840/files/ATL-COM-PHYS-2017-1031.pdf
 
-A model that is becoming popular in \monoX dark matter searches is known as the two Higgs doublet + pseudo-scalar (2HDM+PS) model \cite{Bauer:2017ota}. 2HDMs are essential for many well-motivated BSM theories. They are perturbative and avoid violating unitarity by allowing mixing between the dark matter mediator and other bosons. 
+A model that is becoming popular in Run 2 \monoX dark matter searches is known as the two Higgs doublet + pseudo-scalar (2HDM+PS) model \cite{Bauer:2017ota}. 2HDMs are essential for many well-motivated BSM theories. They are perturbative and avoid violating unitarity by allowing mixing between the dark matter mediator and other bosons. 
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.75\textwidth]{Figures/2hdma.png}
 % EPS paper: https://arxiv.org/abs/1708.09624
-\caption{Representative diagrams of the \monoZ signature in the 2HDM+PS model. The second diagram can have $a \rightarrow A$.}
+\caption{Representative 2HDM+PS diagrams for the \monoZ signature. The second diagram can have $A$ instead of $a$.}
 \label{fig:2hdma}
 \end{figure}
 
