@@ -2,4 +2,48 @@
 \label{chapter:appendix}
 
 \section{Event Selections}
+\label{sec:evtsel}
+
+Table \ref{tab:sel} summarizes the event selection requirements from the 2015+2016 analysis.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{c|c}
+\hline
+\hline
+Variable  & Requirement  \\
+\hline
+Lepton pair  &
+Exactly one \epem or \mpmm pair with \\
+& leading (subleading) \pt > 30 (20) GeV \\
+\hline
+Third lepton & Veto additional leptons with \pt > 7 GeV \\
+\hline
+$m_{\ell\ell}$ & 76-106 GeV  \\
+\hline
+\etmiss & > 90 GeV \\
+\hline
+$\Delta R_{\ell\ell}$ & < 1.8  \\
+\hline
+$|\Delta\phi(p_\text{T}^{\ell\ell},$\etmiss)| & > 2.7  \\
+\hline
+Fractional \pt difference &  < 0.2  \\
+\hline
+\etmissht & > 0.6 \\
+\hline
+$b$-jets  & Veto $b$-tagged jets  \\
+\hline
+\hline
+\end{tabular}
+\end{center}
+\caption{Event selections used for the 2015+2016 result.}
+\label{tab:sel}
+\end{table}
+
+\noindent Several variables are calculated from the lepton pair. $m_{\ell\ell}$ and $p_\text{T}^{\ell\ell}$ are the invariant mass and the transverse momentum of the pair, and $\Delta R_{\ell\ell}$ is the angular separation between them, where $\Delta R = \sqrt{(\Delta \eta)^2 + (\Delta \phi)^2}$. The fractional \pt difference = $| p_\text{T}^{\ell\ell} - |\vec{E}_\text{T}^\text{miss} + \sum \vec{p}_\text{T}^\text{jets}| | / p_\text{T}^{\ell\ell}$, and $H_\text{T} = p_\text{T}^\text{jets} + p_\text{T}^{\ell_1} + p_\text{T}^{\ell_2}$.
+
+\clearpage
+
 \section{Calibration Studies on Close-By Jets}
+
+The purpose of this work is to validate the jet calibration performance for $R = 0.4$ \akt EM-scale jets in close-by environments. Studies are done on the jet response and resolution for calibrated, close-by jets in \Pythia 8 dijet MC as a function of \DeltaRmin, jet area, and \fCloseby, variables that are used to assess how close-by a jet is. With minimal jet selections and standard $\DeltaR < 0.3$ truth matching, a significant population of low response close-by jets is observed, primarily at low \pt. Several categories of low response close-by jets are investigated. Of the categories investigated, the most important sources of low response are jets with a multi-matched truth jet (one truth jet matched to several jets), and jets with a bad truth matching. Ghost truth association is studied as a robust alternative to \DeltaR truth matching, which can break down in very close-by environments. After removing different sources of low response and switching to ghost truth matching, good agreement is seen in the response for close-by jets with small \DeltaRmin compared to more isolated jets. However some low response jets with small area and/or large \fCloseby remain. Topology and GSC dependence is investigated for these remaining jets, as well as the correlation between \DeltaRmin, area, and \fCloseby.
