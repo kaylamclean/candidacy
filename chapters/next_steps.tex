@@ -114,18 +114,26 @@ The Papucci model may serve as a good starting point. The \monoZ analysis curren
 % --------------------------------------------------------------------------------------
 \section{Other Analysis Improvements}
 
-The \monoZ limits have been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The same should be done to put limits on the velocity-averaged dark matter annihilation cross section into $q\bar{q}$ and compare with ID experiments. The procedure for converting the 2D mass limits into a limit on $\langle \sigma v_\text{rel} \rangle$ is covered in \cite{Boveia:2016mrp}. Figure \ref{fig:id} gives a schematic example of what the comparison may look like.
-
-\begin{figure}[h]
+\begin{figure}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{Figures/id.png}
 \caption{A schematic of a collider limit on $\langle \sigma v_\text{rel} \rangle$ vs $m_\chi$ overlaid with a ID measurement \cite{Boveia:2016mrp}.}
 \label{fig:id}
 \end{figure}
 
+The \monoZ limits have been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The same can be done to put limits on the velocity-averaged dark matter annihilation cross section into $q\bar{q}$ and compare with ID experiments. The procedure for converting the 2D mass limits into a limit on $\langle \sigma v_\text{rel} \rangle$ is covered in \cite{Boveia:2016mrp}. Figure \ref{fig:id} gives a schematic example of what the comparison may look like.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.55\textwidth]{Figures/limits_dmA_sigma.png}
+\caption{Mono-jet axial-vector limits on the dark matter production cross section with 36.1 \ifb \cite{Collaboration:2268179}.}
+\label{fig:limits_dmA_sigma_monojet}
+\end{figure}
+
+Another format to display limits in is an upper limit on the dark matter production cross section. The 2D mass exclusions shown in e.g. Figure \ref{fig:limits} are determined using the \cls value for a signal strength of $\mu=1$. The observed contour is the line at which \cls = 0.05, and the upper limit on $\mu$ on this line equals 1 by definition. The region within the contour has an upper limit < 1, and the region outside the contour has an upper limit > 1. The upper limit on $\mu$ can hence be used to determine the upper limit on the cross section for the dark matter production process using $\mu \equiv \sigma/\sigma_\text{theory}$, where $\sigma$ and $\sigma_\text{theory}$ are the observed and predicted production cross sections. Figure \ref{fig:limits_dmA_sigma_monojet} shows such a plot from the mono-jet axial-vector search. The colours on the z-axis indicate the observed upper limit on $\mu$. The same type of plot can be produced for \monoZ.
+
 Another improvement on the horizon for the analysis is the inclusion of weights in the signal MC generation to calculate QCD, PDF, and PS systematic uncertainties. This will allow the systematic variations to be calculated for each sample using a weight, rather than having to tediously generate our own truth samples for each variation. This will be especially useful for NLO samples, since MC generation will take much longer than for models at LO. In addition, the uncertainty for each sample will be used rather than having to interpolate between masses, etc. The technical implementation of including these weights in our \madgraph and \pythia simulation has been successful; the weights will be included in the upcoming NLO simplified model sample requests, and hopefully all future requests for other models. The proper procedure for using these weights will need to be studied and the analysis code will need to be adapted accordingly.
 
-Finally, the \monoZ analysis software will continue to be improved throughout Run 2. {\color{red}TODO!}
- 
-{\color{red}TODO: Anything else I haven't thought of?}
+Finally, the \monoZ analysis software will continue to be used and improved throughout Run 2. With each new data-taking period, there comes new sets of recommendations on how to use the tools for calibrating objects, apply pileup reweighting, etc.
+These recommendations are being finalized for the 2017 data-taking period, and there will be more to come for 2018. The code will continue to be updated and validated throughout the entire Run 2 campaign.
 

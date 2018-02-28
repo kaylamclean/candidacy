@@ -105,7 +105,6 @@ In the \monoZ analysis, \pt reweighting was not sufficient to have good agreemen
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{Figures/gjets.png}
-% EPS paper: https://arxiv.org/abs/1708.09624
 \caption{\etmiss distributions for \gjets events (red) and \Zjets events (black without reweighting, blue with reweighting).}
 \label{fig:gjets}
 \end{figure}
@@ -147,7 +146,7 @@ Asymptotic formulae \cite{Cowan:2010js} are used to calculate the closed form of
 p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
 \end{equation}
 
-\noindent Hence it is the probability to observe a test statistic greater than or equal to the observed value, given that the $s+b$ ($\mu=1$) hypothesis is true. Performing exclusion tests with $p_{s+b}$ is known as the CL$_{s+b}$ method. This analysis uses the CL$_s$ method, where the p-value, or the ``CL$_s$ value,'' is defined as:
+\noindent Hence it is the probability to observe a test statistic greater than or equal to the observed value, given that the $s+b$ ($\mu=1$) hypothesis is true. Performing exclusion tests with $p_{s+b}$ is known as the CL$_{s+b}$ method. This analysis uses the \cls method, where the p-value, or the ``\cls value,'' is defined as:
 
 \begin{equation}
 \text{CL}_s \equiv \frac{p_{s+b}}{1-p_b},
@@ -159,7 +158,7 @@ p_\mu \equiv p_{s+b} = P(\tilde q_\mu \geq \tilde{q}_{\mu,\text{obs}} | s+b)
 p_b = P(\tilde q_\mu \leq \tilde{q}_{\mu,\text{obs}} | b).
 \end{equation}
 
-Using the CL$_s$ method, any $\mu$ values that give CL$_s<0.05$ are excluded at the 95\% confidence level (CL). These upper limits on $\mu$ are then extracted from \histfitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
+Using the \cls method, any $\mu$ values that give \cls < 0.05 are excluded at the 95\% confidence level (CL). These upper limits on $\mu$ are then extracted from \histfitter, and dark matter mass exclusion limits are produced using the MonoZLimitsUVic framework that was written for this purpose.
 
 Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 result on \mchi vs \mmed for axial-vector and vector mediators from the LO simplified models. The mass region inside the contour is excluded at the 95\% CL. The relic density line indicates where the particles and interactions of the model are by themselves sufficient for explaining the observed DM abundance in the universe.
 
