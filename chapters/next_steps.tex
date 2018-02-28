@@ -22,11 +22,10 @@ Z = \sqrt{2 \left( (s+b) \ln \left( \frac{(s+b)(b+\sigma_b^2)}{b^2+(s+b)\sigma_b
 
 A reoptimization of the signal region is also motivated by newly available \etmiss-related quantities that could improve the \monoZ analysis. For example, two \etmiss working points are now available. In the new ``tight'' \etmiss definition, jets in the forward region of the detector must have \pt > 30 GeV to reduce contributions from pileup. The ``loose'' definition (used previously in this analysis) includes all jets with \pt > 20 GeV except for forward jets with \pt < 60 GeV that fail an additional minimum jet vertex tagger (JVT) requirement, a multivariate criteria that identifies pileup jets from tracks. The tight definition is now recommended because the \etmiss resolution is improved. Both definitions will be studied to validate the improvement in switching to the tight definition.
 
-Another new variable is the \etmiss significance $\mathcal{S}$ {\color{red}TODO: Citation!} It is defined using a log-likelihood ratio to estimate how likely it is that the reconstructed \etmissvec, summed from all reconstructed objects, is consistent with the true \etmissvec according to:
+Another new variable is the \etmiss significance $\mathcal{S}$ \cite{Schaefer:2294922}. It is defined using a log-likelihood ratio to estimate how likely it is that the reconstructed \etmissvec, summed from all reconstructed objects, is consistent with the true \etmissvec according to:
 
 \begin{equation}
 \mathcal{S} = 2 \ln \left( \frac{\mathcal{L}(\vec{E}_\text{T}^\text{miss} = \sum_i \vec{E}_{\text{T,}i}^\text{miss})}{\mathcal{L}(\vec{E}_\text{T,true}^\text{miss} = 0)} \right)
-% https://cds.cern.ch/record/2294922/files/ATL-COM-PHYS-2017-1735.pdf
 \end{equation}
 
 \noindent In other words, the significance measures how well the measured \etmissvec agrees with the null hypothesis that $\vec{E}_\text{T,true}^\text{miss} = 0$, i.e. there really is no \etmiss in the event. This discriminant is more powerful in rejecting events with fake \etmiss from mis-measured objects (compared to more traditional variables such as \etmissht) because it includes the uncertainties of the reconstructed objects and track-based soft term that enter the \etmiss calculation. Hence this is a promising variable to help reduce the \Zjets background, arguably the most difficult background to estimate in this analysis.
@@ -87,7 +86,7 @@ The other type of signature to be investigated with the full Run 2 dataset is th
 The Papucci model \cite{Papucci:2014iwa} was the first $t$-channel model recommended by the LHC DM WG in \cite{Abercrombie:2015wmb}. The interaction Lagrangian is given by:
 
 \begin{equation}
-\mathcal{L}_\text{int} = g \sum_{i=1,2} \left( \eta_{(i),L} \bar{Q}_{(i),L} + \eta_{(i),u,R} \bar{u}_{(i),R} + \eta_{(i),d,R} \bar{d}_{(i),R} \right) \chi
+\mathcal{L}_\text{int} = g \sum_{i=1,2} \left( \eta_{(i),L} \bar{Q}_{(i),L} + \eta_{(i),u,R} \bar{u}_{(i),R} + \eta_{(i),d,R} \bar{d}_{(i),R} \right) \chi + h.c.
 \end{equation}
 
 \noindent Here $Q_{(i),L}$, $u_{(i),R}$, and $d_{(i),R}$ are the SM quarks, $\eta_{(i),L}$, $\eta_{(i),u,R}$, and $\eta_{(i),d,R}$ are the mediator particles, and $g$ is the coupling between the SM particles and dark matter. $L$ and $R$ indicate left- and right-handedness, and the index $i$ is the quark generation. In the Papucci model only the first two generations are considered. 
@@ -95,7 +94,7 @@ The Papucci model \cite{Papucci:2014iwa} was the first $t$-channel model recomme
 The mono-jet analysis recently set limits on the $t$-channel signature using the Bell model \cite{Bell:2012rg}, a subset of the Papucci model with the interaction Lagrangian:
 
 \begin{equation}
-\mathcal{L}_\text{int} = g \sum_{i=1,2,3} \eta_{(i),L} \bar{Q}_{(i),L} \chi
+\mathcal{L}_\text{int} = g \sum_{i=1,2,3} \eta_{(i),L} \bar{Q}_{(i),L} \chi + h.c.
 \end{equation}
 
 \noindent In this model, couplings to right-handed quarks are turned off, but the third generation of quarks is included. The mono-jet analysis chose to use this model without including the third generation. This decision was based on the availability of Bell et al.\xspace to answer technical questions about the implementation/generation in \madgraph. The best choice for the \monoZ search will need to be investigated.
@@ -110,7 +109,7 @@ The so-called Less Simplified (LS) models \cite{Ko:2016zxg} are another promisin
 
 And there are even more models \cite{Bauer:2017fsw} being discussed as potential new $t$-channel benchmarks. Discussions will need to be had with the LHC DM WG in order to determine the best model(s) to investigate.
 
-The Papucci model may serve as a good starting point. The \monoZ analysis currently has eight Papucci model signal samples that were requested at the start of Run 2. Hypothesis tests were run on them with 36.1 \ifb of data, but none of the samples were excluded. The mono-jet analysis recently set $t$-channel exclusion limits using the Bell model, and their axial-vector and coloured scalar mediators exclusion regions were quite similar. Hence it was unexpected that none of the \monoZ signals were excluded. This led to some investigations, and it turns out that the \monoZ samples were generated with an incorrect mediator width. The plan now is to use \madgraph to generate $t$-channel samples with the correct and incorrect mediators to understand the effect on signal. If only the cross section is affected and not the \etmiss, then it may be possible to scale the incorrect reconstructed samples to the correct normalization and then rerun the limit setting. From the mono-jet analysis we expect to get similar reach in mass as for the axial-vector model. Then an estimate can be made on how far the limit will reach and a full set of $t$-channel samples can be requested. Mass point emulation will also need to be investigated at the same time to determine how fine/coarse the grid of reconstructed points should be. {\color{red}TODO: This paragraph may not be needed, or it can be condensed...}
+The Papucci model may serve as a good starting point. The \monoZ analysis currently has eight Papucci model signal samples that were requested at the start of Run 2. Hypothesis tests were run on them with 36.1 \ifb of data, but none of the samples were excluded. The mono-jet analysis recently set $t$-channel exclusion limits using the Bell model, and their axial-vector and coloured scalar mediators exclusion regions were quite similar. Hence it was unexpected that none of the \monoZ signals were excluded. This led to some investigations, and it turns out that the \monoZ samples were generated with an incorrect mediator width. The plan now is to use \madgraph to generate $t$-channel samples with the correct and incorrect mediators to understand the effect on signal. If only the cross section is affected and not the \etmiss, then it may be possible to scale the incorrect reconstructed samples to the correct normalization and then rerun the limit setting. From the mono-jet analysis we expect to get similar reach in mass as for the axial-vector model. Then an estimate can be made on how far the limit will reach and a full set of $t$-channel samples can be requested. Mass point emulation will also need to be investigated at the same time to determine how fine/coarse the grid of reconstructed points should be.
 
 % --------------------------------------------------------------------------------------
 \section{Other Analysis Improvements}
