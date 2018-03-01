@@ -108,14 +108,24 @@ Moving outward from the centre of the detector, the next subsystems are the elec
 
 The outermost and largest system of the detector is the muon spectrometer (MS). Muons will interact minimally with the detector and so the MS is designed to measure their momenta from tracks. The MS consists of several systems. Monitored drift tubes (MDTs) are used in the barrel and end caps for measuring track curvature. Resistive plate chambers (RPCs), cathode strip chambers (CSCs), and thin gap chambers (TGCs) are used for precision coordinate measurements throughout the spectrometer. The MS also contains the ATLAS toroid magnet system.
 
-Events that occur in the detector are recorded by the ATLAS trigger system, consisting of tiers that act at the hardware and software levels. The trigger makes decisions on which events to record to disk or not based on energy deposits, etc. {\color{red}TODO}
+Events that occur in the detector are recorded by the ATLAS trigger system. Due to the incredibly high rates of collisions inside the detector, it's not feasible to record every event that occurs (and most events are not interesting). The Level 1 (L1) trigger is hardware-based and makes decisions based on energy clusters in the calorimeter or coincidences in the muon spectrometer. If the event passes the L1 trigger, then it moves to the High Level Trigger (HLT), a more sophisticated software-based algorithm. A single electron trigger in the HLT may require, for example, that an object meet some electron identification criteria, have some minimum \pt, and be relatively isolated. The event is recorded to disk if the L1 and HLT are passed.
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.6\textwidth]{Figures/etmiss.png}
-\caption{Definition of the missing transverse momentum \etmissvec.}
+\includegraphics[width=0.4\textwidth]{Figures/etmiss.png}
+\caption{Schematic of the missing transverse momentum \etmissvec.}
 \label{fig:etmiss}
 \end{figure}
+
+Events that are recorded and deemed to be ``good for physics'' can be analyzed. The reconstructed objects in the events include electrons, photons, muons, and jets. The \etmiss is calculated using the reconstructed objects in the event. Figure \ref{fig:etmiss} shows an example of the transverse plane for an event with three measured particles. The \pt of the reconstructed objects in the event are added together (shown by the red dashed vector). Then the negative is taken to balance the measured \pt in the event (the solid red vector). This is the \etmissvec. The vector quantity \etmissvec is known as the missing transverse momentum, while its magnitude \etmiss is referred to as the missing transverse energy. The formal definition is given by:
+
+\begin{equation}
+\vec{E}_\text{T}^\text{miss} = - \left( \sum \vec{p}_\text{T}^\text{ jets} + \sum \vec{p}_\text{T}^\text{ electrons} + \sum \vec{p}_\text{T}^\text{ muons} + \sum \vec{p}_\text{T}^\text{ soft track} \right)
+\end{equation}
+
+\noindent The soft track term is formed from leftover tracks that are not used in another object. Energy clusters can also be used for this term, but tracks are more robust in high pileup environments. 
+
+The physics objects used for a given analysis may have further, stricter requirements, such as residing in a specific region of the detector. Then those selected objects are used to calculate the kinematic quantities used in the event selection.
 
 \clearpage
 
