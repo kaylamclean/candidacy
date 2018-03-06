@@ -43,7 +43,7 @@ A framework has been adapted, called MonoZTruthUVic, for applying truth-equivale
 
 An important study that must be performed at the truth-level is the estimation of theoretical uncertainties on the signal \textit{acceptance}, the fraction of signal events that end up in the signal region. There are potentially significant sources of systematic uncertainties from theory that must be considered. It should be noted that systematics from uncertainties in the parton distribution function (PDF) are also evaluated in the analysis but are not discussed in detail here. 
 
-The signal yield and acceptance depend on two scales from quantum chromodynamics (QCD) known as the renormalization and factorization scales, $\mu_r$ and $\mu_f$. Both scales are arbitrary and arise from finite order perturbation theory. $\mu_r$ is related to the renormalization of ultraviolet divergences, and $\mu_f$ qualitatively corresponds to the resolution at which the proton is being probed. From the QCD factorization ansatz \cite{Collins:1989gx}, the cross section for a hard process resulting from the collision of two protons with momenta $p_1$ and $p_2$ can be written as
+The signal yield and acceptance depend on two scales from quantum chromodynamics (QCD) known as the renormalization and factorization scales, $\mu_r$ and $\mu_f$. Both scales are arbitrary and arise from finite order perturbation theory. $\mu_r$ is related to the renormalization of ultraviolet divergences, and $\mu_f$ qualitatively corresponds to the resolution at which the proton is being probed. From the QCD factorization ansatz \cite{Collins:1989gx}, the cross section for a hard process resulting from the collision of two protons with momenta $p_1$ and $p_2$ can be written in terms of $\mu_f$ and $\mu_r$ as
 
 \begin{equation}
 \sigma = \int \text{d}x_1 \text{d}x_2 f_1(x_1, \mu_f^2) f_2 (x_2, \mu_f^2) \hat{\sigma}(x_1 p_1, x_2 p_2, \alpha_s(\mu_r), Q^2, \mu_r^2, \mu_f^2),
@@ -124,7 +124,7 @@ L(\mu,\boldsymbol{\theta}) = \prod_{i=1}^N \frac{(\mu s_i + b_i)^{n_i}}{n_i !} e
 \label{eqn:likelihood}
 \end{equation}
 
-\noindent The first term is the product of Poisson probabilities to observe $n_i$ events for each signal region bin $i$ that has $\mu s_i + b_i$ expected events. $s_i$ and $b_i$ are the predicted signal and background yields in each bin, and $\mu$ is the signal strength parameter (also called the \textit{parameter of interest}). $\mu=0$ is the background-only hypothesis, and $\mu=1$ is the signal+background hypothesis. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of nuisance parameters (NPs) $\vec{\theta}$ (= $\boldsymbol{\theta}$), which are each parametrized by a Gaussian. The second term in Equation \ref{eqn:likelihood} is a product of these terms over all systematics, where $\theta_j^0$ is the measured central value around which $\theta_j$ varies. In \histfitter the $G$'s are parametrized so that each $\theta_j^0$ is fixed to 0 with standard deviation = 1.
+\noindent The first term is the product of Poisson probabilities to observe $n_i$ events for each signal region bin $i$ that has $\mu s_i + b_i$ expected events. $s_i$ and $b_i$ are the predicted signal and background yields in each bin, and $\mu$ is the signal strength parameter (also called the \textit{parameter of interest}). $\mu=0$ is the background-only hypothesis, and $\mu=1$ is the signal+background hypothesis. The dependence of the signal and background predictions on the systematic uncertainties is described by a set of nuisance parameters $\vec{\theta}$ (= $\boldsymbol{\theta}$), which are each parametrized by a Gaussian. The second term in Equation \ref{eqn:likelihood} is a product of these terms over all systematics, where $\theta_j^0$ is the measured central value around which $\theta_j$ varies. In \histfitter the $G$'s are parametrized so that each $\theta_j^0$ is fixed to 0 with standard deviation = 1.
 
 The nominal fit result is obtained by maximizing the likelihood function with respect to all parameters. This is referred to as the maximum likelihood, $L(\hat{\mu}, \hat{\boldsymbol{\theta}})$, where $\hat\mu$ and $\hat{\boldsymbol{\theta}}$ are the parameters that maximize the likelihood. A \textit{test statistic}, $\tilde q_\mu$, is then constructed based on the profile likelihood ratio $\lambda(\mu)$:
 
@@ -133,7 +133,7 @@ The nominal fit result is obtained by maximizing the likelihood function with re
 \label{eqn:proflike}
 \end{equation}
 
-\noindent $\hat{\hat{\boldsymbol{\theta}}}$ are the NP values that maximize the likelihood for a fixed $\mu$. Because the denominator is the maximum likelihood, it must be true that $0 \leq \lambda(\mu) \leq 1$. Hence smaller values of $\lambda(\mu)$ indicate less agreement between the measured $\hat{\mu}$ and the hypothesized $\mu$. For the test statistic $\tilde q_\mu$, larger values are interpreted as greater incompatibility between measurement and the $\mu$ hypothesis. The corresponding p-value, $p_\mu$, is then defined as:
+\noindent $\hat{\hat{\boldsymbol{\theta}}}$ are the nuisance parameter values that maximize the likelihood for a fixed $\mu$. Because the denominator is the maximum likelihood, it must be true that $0 \leq \lambda(\mu) \leq 1$. Hence smaller values of $\lambda(\mu)$ indicate less agreement between the measured $\hat{\mu}$ and the hypothesized $\mu$. For the test statistic $\tilde q_\mu$, larger values are interpreted as greater incompatibility between measurement and the $\mu$ hypothesis. The corresponding p-value, $p_\mu$, is then defined as:
 
 \begin{equation}
 p_\mu = \int_{\tilde{q}_{\mu,\text{obs}}}^\infty f(\tilde{q}_\mu | \mu) \text{d}\tilde{q}_\mu
@@ -163,7 +163,7 @@ Using the \cls method, $\mu$ values that give \cls < 0.05 are excluded at the 95
 
 Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 dataset on \mchi vs \mmed for axial-vector and vector mediators from the LO simplified models. The mass region inside the contour is excluded at the 95\% CL. The relic density line indicates where the particles and interactions of the model are by themselves sufficient for explaining the observed DM abundance in the universe.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\textwidth]{Figures/limits_dmA.pdf}
@@ -175,13 +175,13 @@ Figure \ref{fig:limits} shows the exclusion limits from the 2015+2016 dataset on
         \includegraphics[width=\textwidth]{Figures/limits_dmV.pdf}
         \label{fig:limits_dmV}
     \end{subfigure}
-    \caption{Axial-vector (left) and vector (right) exclusion limits on \mchi vs \mmed with 36.1 \ifb.}
+    \caption{Axial-vector (left) and vector (right) exclusion limits on \mchi vs \mmed with 36.1~\ifb \cite{Aaboud:2017bja}. The dashed black line is the expected limit with $\pm 1 \sigma$ error bands in green. The solid black line is the observed limit. The relic density calculation for the assumed dark matter model is illustrated by the magenta line. The dashed grey line is the on-shell line where \mmed $= 2 m_\chi$.}
 \label{fig:limits}
 \end{figure}
 
-The 2D mass limits have also been recast into limits on the DM-proton scattering cross section for comparison with DD experiments. The procedure for doing so is given in \cite{Boveia:2016mrp}. Figure \ref{fig:xsec} shows the recast \monoZ limits for the spin-dependent (SD) and spin-independent (SI) scattering cross sections vs \mmed. The cross section is SD if the isotope used in the DD experiment has an unpaired proton or neutron. The limits shown are at the 90\% CL in accordance with the standard used by DD experiments. The coloured lines overlaid are limits set by DD experiments.
+The 2D mass limits have also been recast into limits on the DM-proton scattering cross section for comparison with direct detection experiments. The procedure for doing so is given in \cite{Boveia:2016mrp}. Figure \ref{fig:xsec} shows the recast \monoZ limits for the spin-dependent and spin-independent scattering cross sections vs \mmed. The cross section is spin-dependent if the isotope used in the direct detection experiment has an unpaired proton or neutron. The limits shown are at the 90\% CL in accordance with the standard used by direct detection experiments. The coloured lines overlaid are limits set by direct detection experiments. The region enclosed by the ATLAS result, and above each coloured line, is excluded at the 90\% CL.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\textwidth]{Figures/xsec_dmA.pdf}
@@ -193,13 +193,14 @@ The 2D mass limits have also been recast into limits on the DM-proton scattering
         \includegraphics[width=\textwidth]{Figures/xsec_dmV.pdf}
         \label{fig:xsec_dmV}
     \end{subfigure}
-    \caption{Axial-vector (left) and vector (right) exclusion limits on the DM-nucleon scattering cross section vs \mmed with 36.1 \ifb.}
+    \caption{Spin-dependent (left) and spin-independent (right) exclusion limits on the DM-proton scattering cross section vs \mmed with 36.1 \ifb \cite{Aaboud:2017bja}. The solid black line indicates the 90\% CL ATLAS result, and the coloured lines indicate direct detection measurements.}
 \label{fig:xsec}
 \end{figure}
 
-Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 dataset. These are shown in Figure \ref{fig:2hdma}. Limits are set on $m_H$ vs $m_a$ as well as $\tan(\beta)$ vs $m_a$.
+\clearpage
+Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 dataset. These are shown in Figure \ref{fig:2hdma}. Limits are set on $m_H$ vs $m_a$ as well as $\tan \beta$ vs $m_a$. The region inside the contour is excluded.
 
-\begin{figure}[htb]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\textwidth]{Figures/limits_2hdma.pdf}
@@ -211,22 +212,22 @@ Exclusion limits on the 2HDM+PS model have also been set with the 2015+2016 data
         \includegraphics[width=\textwidth]{Figures/limits_2hdma_tan.pdf}
         \label{fig:limits_2hdma_tan}
     \end{subfigure}
-    \caption{$m_H$ vs $m_a$ (left) and $\tan(\beta)$ vs $m_a$ (right) exclusion limits with 36.1 \ifb.}
+    \caption{$m_H$ vs $m_a$ (left) and $\tan \beta$ vs $m_a$ (right) exclusion limits with 36.1 \ifb (preliminary internal result). The dashed black line is the expected limit with $\pm 1 \sigma$ error bands in green. The solid black line is the observed limit.}
 \label{fig:2hdma}
 \end{figure}
 
 In the mass limits above, the red points indicate the masses at which there are reconstructed signal samples. The blue points indicate \textit{emulated} points. Mass point emulation is performed to create a finer grid of signal samples without using reconstructed samples. The exclusion contour may look jagged in areas with a coarse grid of signal points. By adding in emulated points, the contour can be made smoother and more physical without going through the tedious process of requesting additional reconstructed MC samples. The method discussed here has been used for the LO simplified models with 36.1 \ifb; emulation for the 2HDM+PS model is more complicated and is not discussed here. 
 
-The validity of emulating signal samples relies on the assumption that the kinematics (i.e. the \etmiss distributions) of the signal does not depend on \mchi in the on-shell region (where $m_\text{med} > 2 m_\chi$). If this is true, then the $E_T^{miss}$ distribution for a reconstructed sample at a given \mmed can be used as the \etmiss distribution for other signal samples with the same \mmed. However, the \etmiss distribution for the emulated sample must be scaled by the ratio of cross sections $\sigma_\text{reco}/\sigma_\text{emul}$. So, as long as the grid of reconstructed points is fine along \mmed, additional points with different \mchi can be emulated just by using the cross sections.
+The validity of emulating signal samples relies on the assumption that the kinematics (i.e.\ the \etmiss distributions) of the signal does not depend on \mchi in the on-shell region (where $m_\text{med} > 2 m_\chi$). If this is true, then the $E_T^{miss}$ distribution for a reconstructed sample at a given \mmed can be used as the \etmiss distribution for other signal samples with the same \mmed. However, the \etmiss distribution for the emulated sample must be scaled by the ratio of cross sections $\sigma_\text{reco}/\sigma_\text{emul}$. So, as long as the grid of reconstructed points is fine along \mmed, additional points with different \mchi can be emulated just by using the cross sections.
 
-For the axial-vector model, studies on the signal acceptance were been performed and verified that the signal acceptance is flat for a fixed \mmed. For the vector model, an additional complication was that we had a fairly coarse granularity of reconstructed points along \mmed. Because of this, we exploited the similar kinematics between the axial-vector and vector signals and performed emulation from axial-vector $\rightarrow$ vector samples. Emulation for both models has become customary in the \monoZ analysis and will continue to be used moving forward towards the full dataset.
+For the axial-vector model, studies on the signal acceptance were performed and verified that the signal acceptance does not depend on \mchi when \mmed is constant. For the vector model, an additional complication was that we had a fairly coarse granularity of reconstructed points along \mmed. Because of this, we exploited the similar kinematics between the axial-vector and vector signals and performed emulation from axial-vector to vector samples. Emulation for both models has become customary in the \monoZ analysis and will continue to be used moving forward towards the full dataset analysis.
 
 
 % --------------------------------------------------------------------------------------
 \section{Analysis Software}
 \label{sec:code}
 
-The MonoZUVic software package is the core of the analysis and has been developed by the UVic group for the past few years. Throughout the evolution of the analysis, contributions have been made towards writing and maintaining the software. The software must be capable of running the entire analysis, including object (electron, muon, jet) calibrations/corrections/selections, removal of overlaps between objects, applying event selections, calculating event weights and kinematic variables, evaluating experimental systematics, and in the end producing trees/histograms for data and MC. Things like calibration recommendations and data formats are in flux quite frequently, and diligent efforts are made to keep the code updated. The software is also cross checked with other groups running the analysis to ensure updated calibrations, squash bugs, etc. The MonoZTruthUVic and MonoZLimitsUVic packages, mentioned briefly above, were written to perform truth-level studies and produce exclusion limits. These packages are also be maintained alongside MonoZUVic. Contributions have also been made to design overhauls in the framework as the analysis has evolved and improved.
+The MonoZUVic software package is the core of the analysis and has been developed by the UVic group for the past few years. Throughout the evolution of the analysis, contributions have been made towards writing and maintaining the software. The software must be capable of running the entire analysis, including object (electron, muon, jet) calibrations/corrections/selections, removal of overlaps between objects, applying event selections, calculating event weights and kinematic variables, evaluating experimental systematics, and in the end producing trees/histograms for data and MC. Items such as calibration recommendations and data formats change frequently, and diligent efforts are made to keep the code updated. The software is also cross checked with other groups running the analysis to ensure updated calibrations, prevent errors, etc. The MonoZTruthUVic and MonoZLimitsUVic packages, mentioned briefly above, were developed by the author to perform truth-level studies and produce exclusion limits. These packages are also be maintained alongside MonoZUVic. Contributions have also been made to design overhauls in the framework as the analysis has evolved and improved.
 
 
 
